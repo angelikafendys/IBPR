@@ -1,0 +1,1175 @@
+[
+  {
+    "id": "RS-1",
+    "nama": "Griya Karya Hasea Medan",
+    "type": "Griya Karya",
+    "lokasiStasiun": "Stasiun Medan",
+    "alamat": "Stasiun Medan, Jl. Kereta Api, Kesawan, Medan Barat, Kota Medan, Sumatera Utara 20111",
+    "divre": "I. DIVRE 1 SUMATERA UTARA",
+    "coordinates": {
+      "lat": 3.590878,
+      "lon": 98.679742
+    },
+    "kapasitas": 16,
+    "okupansiSaatIni": 3,
+    "kondisi": "Cukup (Perlu Renovasi Sanitasi)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-2",
+    "nama": "Griya Karya Kisaran",
+    "type": "Griya Karya",
+    "lokasiStasiun": "Stasiun Kisaran",
+    "alamat": "Stasiun Kisaran, Jl. HOS Cokroaminoto No. 1, Mekar Baru, Kisaran Barat, Kab. Asahan, Sumatera Utara 21216",
+    "divre": "I. DIVRE 1 SUMATERA UTARA",
+    "coordinates": {
+      "lat": 2.98639,
+      "lon": 99.62361
+    },
+    "kapasitas": 16,
+    "okupansiSaatIni": 2,
+    "kondisi": "Sangat Baik (Terawat)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-3",
+    "nama": "Griya Karya Rantauprapat",
+    "type": "Griya Karya",
+    "lokasiStasiun": "Stasiun Rantauprapat",
+    "alamat": "Stasiun Rantau Prapat, Jl. W.R. Supratman No. 1, Padang Matingi, Rantau Utara, Kab. Labuhanbatu, Sumatera Utara 21411",
+    "divre": "I. DIVRE 1 SUMATERA UTARA",
+    "coordinates": {
+      "lat": 2.1125,
+      "lon": 99.81694
+    },
+    "kapasitas": 16,
+    "okupansiSaatIni": 5,
+    "kondisi": "Sangat Baik (Terawat)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-4",
+    "nama": "Griya Karya Tebingtinggi",
+    "type": "Griya Karya",
+    "lokasiStasiun": "Stasiun Tebingtinggi",
+    "alamat": "Stasiun Tebing Tinggi, Jl. Imam Bonjol, Satria, Padang Hilir, Kota Tebing Tinggi, Sumatera Utara 20998",
+    "divre": "I. DIVRE 1 SUMATERA UTARA",
+    "coordinates": {
+      "lat": 3.327089,
+      "lon": 99.168409
+    },
+    "kapasitas": 16,
+    "okupansiSaatIni": 4,
+    "kondisi": "Sangat Baik (Terawat)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-5",
+    "nama": "Griya Karya Perlanaan",
+    "type": "Griya Karya",
+    "lokasiStasiun": "Stasiun Perlanaan",
+    "alamat": "Stasiun Perlanaan, Perlanaan, Bandar, Kab. Simalungun, Sumatera Utara 21184",
+    "divre": "I. DIVRE 1 SUMATERA UTARA",
+    "coordinates": {
+      "lat": 3.17583,
+      "lon": 99.3625
+    },
+    "kapasitas": 16,
+    "okupansiSaatIni": 3,
+    "kondisi": "Sangat Baik (Terawat)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-6",
+    "nama": "Griya Karya Nurdin Padang",
+    "type": "Griya Karya",
+    "lokasiStasiun": "Stasiun Padang",
+    "alamat": "Stasiun Padang, Jl. Stasiun Padang No. 1, Simpang Haru, Padang Timur, Kota Padang, Sumatera Barat 25123",
+    "divre": "II. DIVRE 2 SUMATERA BARAT",
+    "coordinates": {
+      "lat": -0.94352,
+      "lon": 100.37437
+    },
+    "kapasitas": 16,
+    "okupansiSaatIni": 6,
+    "kondisi": "Sangat Baik (Terawat)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-7",
+    "nama": "Griya Karya Kayu Tanam",
+    "type": "Griya Karya",
+    "lokasiStasiun": "Stasiun Kayu Tanam",
+    "alamat": "Stasiun Kayu Tanam, Nagari Kayu Tanam, 2x11 Kayu Tanam, Kab. Padang Pariaman, Sumatera Barat",
+    "divre": "II. DIVRE 2 SUMATERA BARAT",
+    "coordinates": {
+      "lat": -0.548056,
+      "lon": 100.331173
+    },
+    "kapasitas": 16,
+    "okupansiSaatIni": 4,
+    "kondisi": "Sangat Baik (Terawat)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-8",
+    "nama": "Griya Karya Naras",
+    "type": "Griya Karya",
+    "lokasiStasiun": "Stasiun Naras",
+    "alamat": "Stasiun Naras, Jl. Prof. Dr. Hamka, Padang Birik-birik, Pariaman Utara, Kota Pariaman, Sumatera Barat",
+    "divre": "II. DIVRE 2 SUMATERA BARAT",
+    "coordinates": {
+      "lat": -0.570859,
+      "lon": 100.097893
+    },
+    "kapasitas": 16,
+    "okupansiSaatIni": 5,
+    "kondisi": "Cukup (Perlu Renovasi Sanitasi)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-9",
+    "nama": "Griya Karya Indarung",
+    "type": "Griya Karya",
+    "lokasiStasiun": "Stasiun Indarung",
+    "alamat": "Stasiun Indarung, Indarung, Lubuk Kilangan, Kota Padang, Sumatera Barat 25237",
+    "divre": "II. DIVRE 2 SUMATERA BARAT",
+    "coordinates": {
+      "lat": -0.95222,
+      "lon": 100.46333
+    },
+    "kapasitas": 16,
+    "okupansiSaatIni": 3,
+    "kondisi": "Sangat Baik (Terawat)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-10",
+    "nama": "Griya Karya Ranggi Kertapati",
+    "type": "Griya Karya",
+    "lokasiStasiun": "Stasiun Kertapati",
+    "alamat": "Stasiun Kertapati, Jl. Kemang Kertapati, Kemas Rindo, Kertapati, Kota Palembang, Sumatera Selatan 30258",
+    "divre": "III. DIVRE III PALEMBANG",
+    "coordinates": {
+      "lat": -3.01667,
+      "lon": 104.75139
+    },
+    "kapasitas": 16,
+    "okupansiSaatIni": 4,
+    "kondisi": "Sangat Baik (Terawat)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-11",
+    "nama": "Griya Karya Sunaidi Lahat",
+    "type": "Griya Karya",
+    "lokasiStasiun": "Stasiun Lahat",
+    "alamat": "Stasiun Lahat, Jl. Mayor Ruslan, Pasar Baru, Lahat, Kab. Lahat, Sumatera Selatan 31411",
+    "divre": "III. DIVRE III PALEMBANG",
+    "coordinates": {
+      "lat": -3.79028,
+      "lon": 103.54167
+    },
+    "kapasitas": 16,
+    "okupansiSaatIni": 6,
+    "kondisi": "Sangat Baik (Terawat)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-12",
+    "nama": "Griya Karya Zaswir Zakaria Tanjungenim Baru",
+    "type": "Griya Karya",
+    "lokasiStasiun": "Stasiun Tanjungenimbaru",
+    "alamat": "Stasiun Tanjung Enim Baru, Jl. Lintas Sumatra, Tanjung Raja, Muara Enim, Kab. Muara Enim, Sumatera Selatan 31311",
+    "divre": "III. DIVRE III PALEMBANG",
+    "coordinates": {
+      "lat": -3.70889,
+      "lon": 103.80194
+    },
+    "kapasitas": 16,
+    "okupansiSaatIni": 5,
+    "kondisi": "Sangat Baik (Terawat)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-13",
+    "nama": "Griya Karya Lubuklinggau",
+    "type": "Griya Karya",
+    "lokasiStasiun": "Stasiun Lubuklinggai",
+    "alamat": "Stasiun Lubuk Linggau, Jl. Kalimantan, Pasar Permiri, Lubuk Linggau Barat II, Kota Lubuklinggau, Sumatera Selatan 31613",
+    "divre": "III. DIVRE III PALEMBANG",
+    "coordinates": {
+      "lat": -3.293427,
+      "lon": 102.864324
+    },
+    "kapasitas": 16,
+    "okupansiSaatIni": 5,
+    "kondisi": "Sangat Baik (Terawat)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-14",
+    "nama": "Griya Karya Sajidin Niru",
+    "type": "Griya Karya",
+    "lokasiStasiun": "Stasiun Niru",
+    "alamat": "Stasiun Niru, Jl. Pasar Tebat Agung, Tebat Agung, Rambang Niru, Kab. Muara Enim, Sumatera Selatan 31172",
+    "divre": "III. DIVRE III PALEMBANG",
+    "coordinates": {
+      "lat": -3.45583,
+      "lon": 104.06111
+    },
+    "kapasitas": 16,
+    "okupansiSaatIni": 4,
+    "kondisi": "Sangat Baik (Terawat)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-15",
+    "nama": "Griya Karya Banjarsari",
+    "type": "Griya Karya",
+    "lokasiStasiun": "Stasiun Lahat",
+    "alamat": "Stasiun Lahat, Jl. Mayor Ruslan, Pasar Baru, Lahat, Kab. Lahat, Sumatera Selatan 31411",
+    "divre": "III. DIVRE III PALEMBANG",
+    "coordinates": {
+      "lat": -3.79028,
+      "lon": 103.54167
+    },
+    "kapasitas": 16,
+    "okupansiSaatIni": 4,
+    "kondisi": "Cukup (Perlu Renovasi Sanitasi)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-16",
+    "nama": "Griya Karya Prabumulih",
+    "type": "Griya Karya",
+    "lokasiStasiun": "Stasiun Niru",
+    "alamat": "Stasiun Niru, Jl. Pasar Tebat Agung, Tebat Agung, Rambang Niru, Kab. Muara Enim, Sumatera Selatan 31172",
+    "divre": "III. DIVRE III PALEMBANG",
+    "coordinates": {
+      "lat": -3.45583,
+      "lon": 104.06111
+    },
+    "kapasitas": 16,
+    "okupansiSaatIni": 3,
+    "kondisi": "Sangat Baik (Terawat)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-17",
+    "nama": "Griya Karya Tarahan",
+    "type": "Griya Karya",
+    "lokasiStasiun": "Stasiun Tarahan",
+    "alamat": "Stasiun Tarahan, Jl. Soekarno-Hatta (Lintas Sumatra), Srengsem, Panjang, Kota Bandar Lampung, Lampung 35242",
+    "divre": "IV. DIVRE IV TANJUNGKARANG",
+    "coordinates": {
+      "lat": -5.5077623456386,
+      "lon": 105.33967242857
+    },
+    "kapasitas": 16,
+    "okupansiSaatIni": 6,
+    "kondisi": "Sangat Baik (Terawat)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-18",
+    "nama": "Griya Karya Tarahan Baru",
+    "type": "Griya Karya",
+    "lokasiStasiun": "Tarahan",
+    "alamat": "Stasiun Tarahan, Jl. Soekarno-Hatta (Lintas Sumatra), Srengsem, Panjang, Kota Bandar Lampung, Lampung 35242",
+    "divre": "IV. DIVRE IV TANJUNGKARANG",
+    "coordinates": {
+      "lat": -5.49064867228794,
+      "lon": 105.325657295326
+    },
+    "kapasitas": 16,
+    "okupansiSaatIni": 5,
+    "kondisi": "Sangat Baik (Terawat)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-19",
+    "nama": "Griya Karya Baturaja",
+    "type": "Griya Karya",
+    "lokasiStasiun": "Stasiun Baturaja",
+    "alamat": "Stasiun Baturaja, Jl. Letnan Bustam, Baturaja Lama, Baturaja Timur, Kab. Ogan Komering Ulu, Sumatera Selatan 32126",
+    "divre": "IV. DIVRE IV TANJUNGKARANG",
+    "coordinates": {
+      "lat": -4.125,
+      "lon": 104.160278
+    },
+    "kapasitas": 16,
+    "okupansiSaatIni": 6,
+    "kondisi": "Sangat Baik (Terawat)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-20",
+    "nama": "Griya Karya Tigagajah",
+    "type": "Griya Karya",
+    "lokasiStasiun": "Stasiun Tigagajah",
+    "alamat": "Stasiun Tigagajah, Jl. Ibrahim Zahir, Sukajadi, Baturaja Timur, Kab. Ogan Komering Ulu, Sumatera Selatan 32126",
+    "divre": "IV. DIVRE IV TANJUNGKARANG",
+    "coordinates": {
+      "lat": -4.10694,
+      "lon": 104.16722
+    },
+    "kapasitas": 16,
+    "okupansiSaatIni": 4,
+    "kondisi": "Sangat Baik (Terawat)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-21",
+    "nama": "Griya Karya Ketapang",
+    "type": "Griya Karya",
+    "lokasiStasiun": "Stasiun Ketapang",
+    "alamat": "Stasiun Ketapang, Ketapang, Sungkai Selatan, Kab. Lampung Utara, Lampung 34554",
+    "divre": "IV. DIVRE IV TANJUNGKARANG",
+    "coordinates": {
+      "lat": -4.71417,
+      "lon": 104.80222
+    },
+    "kapasitas": 16,
+    "okupansiSaatIni": 6,
+    "kondisi": "Sangat Baik (Terawat)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-22",
+    "nama": "RUMAH SINGGAH PAYAKABUNG I",
+    "type": "Rumah Singgah",
+    "lokasiStasiun": "Stasiun Payakabung",
+    "alamat": "Stasiun Payakabung, Payakabung, Indralaya Utara, Kab. Ogan Ilir, Sumatera Selatan 30812",
+    "divre": "III. DIVRE III PALEMBANG",
+    "coordinates": {
+      "lat": -3.20306,
+      "lon": 104.60111
+    },
+    "kapasitas": 8,
+    "okupansiSaatIni": 4,
+    "kondisi": "Cukup (Perlu Renovasi Sanitasi)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-23",
+    "nama": "RUMAH SINGGAH SERDANG I",
+    "type": "Rumah Singgah",
+    "lokasiStasiun": "Stasiun Serdang",
+    "alamat": "Stasiun Serdang, Segayam, Gelumbang, Kab. Muara Enim, Sumatera Selatan 31171",
+    "divre": "III. DIVRE III PALEMBANG",
+    "coordinates": {
+      "lat": -3.22006194405025,
+      "lon": 104.522905116707
+    },
+    "kapasitas": 8,
+    "okupansiSaatIni": 6,
+    "kondisi": "Sangat Baik (Terawat)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-24",
+    "nama": "RUM,AH SINGGAH KARANGENDA",
+    "type": "Rumah Singgah",
+    "lokasiStasiun": "Stasiun Karangenda",
+    "alamat": "Stasiun Karangenda, Karang Endah, Gelumbang, Kab. Muara Enim, Sumatera Selatan 31171",
+    "divre": "III. DIVRE III PALEMBANG",
+    "coordinates": {
+      "lat": -3.30222,
+      "lon": 104.39611
+    },
+    "kapasitas": 8,
+    "okupansiSaatIni": 3,
+    "kondisi": "Sangat Baik (Terawat)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-25",
+    "nama": "RUMAH SINGGAH GUNUNGMEGANG",
+    "type": "Rumah Singgah",
+    "lokasiStasiun": "Stasiun Gunungmegang",
+    "alamat": "Stasiun Gunung Megang, Gunung Megang Dalam, Gunung Megang, Kab. Muara Enim, Sumatera Selatan 31352",
+    "divre": "III. DIVRE III PALEMBANG",
+    "coordinates": {
+      "lat": -3.454111,
+      "lon": 103.866777
+    },
+    "kapasitas": 8,
+    "okupansiSaatIni": 3,
+    "kondisi": "Sangat Baik (Terawat)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-26",
+    "nama": "RUMAH SINGGAH MUARAGULA I",
+    "type": "Rumah Singgah",
+    "lokasiStasiun": "Stasiun Muaragula",
+    "alamat": "Stasiun Muara Gula, Muara Gula Baru, Ujanmas, Kab. Muara Enim, Sumatera Selatan 31351",
+    "divre": "III. DIVRE III PALEMBANG",
+    "coordinates": {
+      "lat": -3.58222,
+      "lon": 103.77889
+    },
+    "kapasitas": 8,
+    "okupansiSaatIni": 3,
+    "kondisi": "Sangat Baik (Terawat)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-27",
+    "nama": "RUMAH SINGGAH MUARALAWAI I",
+    "type": "Rumah Singgah",
+    "lokasiStasiun": "Stasiun Muaralawai",
+    "alamat": "Stasiun Muara Lawai, Tanjung Jambu, Merapi Timur, Kab. Lahat, Sumatera Selatan",
+    "divre": "III. DIVRE III PALEMBANG",
+    "coordinates": {
+      "lat": -3.65616621117047,
+      "lon": 103.724837342337
+    },
+    "kapasitas": 8,
+    "okupansiSaatIni": 6,
+    "kondisi": "Sangat Baik (Terawat)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-28",
+    "nama": "RUMAH SINGGAH MUARALAWAI II",
+    "type": "Rumah Singgah",
+    "lokasiStasiun": "Stasiun Muaralawai",
+    "alamat": "Stasiun Muara Lawai, Tanjung Jambu, Merapi Timur, Kab. Lahat, Sumatera Selatan",
+    "divre": "III. DIVRE III PALEMBANG",
+    "coordinates": {
+      "lat": -3.65596557986295,
+      "lon": 103.725669953344
+    },
+    "kapasitas": 8,
+    "okupansiSaatIni": 5,
+    "kondisi": "Sangat Baik (Terawat)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-29",
+    "nama": "RUMAH SINGGAH SUKACINTA I",
+    "type": "Rumah Singgah",
+    "lokasiStasiun": "Stasiun Sukacinta",
+    "alamat": "Stasiun Suka Cinta, Suka Marga, Merapi Barat, Kab. Lahat, Sumatera Selatan 31471",
+    "divre": "III. DIVRE III PALEMBANG",
+    "coordinates": {
+      "lat": -3.77865579055941,
+      "lon": 103.624753660808
+    },
+    "kapasitas": 8,
+    "okupansiSaatIni": 3,
+    "kondisi": "Cukup (Perlu Renovasi Sanitasi)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-30",
+    "nama": "RUMAH SINGGAH SUKACINTA II",
+    "type": "Rumah Singgah",
+    "lokasiStasiun": "Stasiun Sukacinta",
+    "alamat": "Stasiun Suka Cinta, Suka Marga, Merapi Barat, Kab. Lahat, Sumatera Selatan 31471",
+    "divre": "III. DIVRE III PALEMBANG",
+    "coordinates": {
+      "lat": -3.77855751285341,
+      "lon": 103.624810223944
+    },
+    "kapasitas": 8,
+    "okupansiSaatIni": 4,
+    "kondisi": "Sangat Baik (Terawat)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-31",
+    "nama": "RUMAH SINGGAH SIMPANG",
+    "type": "Rumah Singgah",
+    "lokasiStasiun": "Stasiun Simpang",
+    "alamat": "Stasiun Simpang, Sungai Rambutan, Indralaya Utara, Kab. Ogan Ilir, Sumatera Selatan 30862",
+    "divre": "III. DIVRE III PALEMBANG",
+    "coordinates": {
+      "lat": -3.10375627312899,
+      "lon": 104.700193444767
+    },
+    "kapasitas": 8,
+    "okupansiSaatIni": 4,
+    "kondisi": "Sangat Baik (Terawat)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-32",
+    "nama": "RUMAH SINGGAH PAYAKABUNG II",
+    "type": "Rumah Singgah",
+    "lokasiStasiun": "Stasiun Payakabung",
+    "alamat": "Stasiun Payakabung, Payakabung, Indralaya Utara, Kab. Ogan Ilir, Sumatera Selatan 30812",
+    "divre": "III. DIVRE III PALEMBANG",
+    "coordinates": {
+      "lat": -3.19922345679657,
+      "lon": 104.604367867806
+    },
+    "kapasitas": 8,
+    "okupansiSaatIni": 5,
+    "kondisi": "Sangat Baik (Terawat)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-33",
+    "nama": "RUMAH SINGGAH SERDANG II",
+    "type": "Rumah Singgah",
+    "lokasiStasiun": "Stasiun Serdang",
+    "alamat": "Stasiun Serdang, Segayam, Gelumbang, Kab. Muara Enim, Sumatera Selatan 31171",
+    "divre": "III. DIVRE III PALEMBANG",
+    "coordinates": {
+      "lat": -3.22008938589933,
+      "lon": 104.522659699572
+    },
+    "kapasitas": 8,
+    "okupansiSaatIni": 6,
+    "kondisi": "Sangat Baik (Terawat)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-34",
+    "nama": "RUMAH SINGGAH GELUMBANG",
+    "type": "Rumah Singgah",
+    "lokasiStasiun": "Stasiun Gelembung",
+    "alamat": "Stasiun Gelumbang (Glumbang), Gelumbang, Gelumbang, Kab. Muara Enim, Sumatera Selatan 31171",
+    "divre": "III. DIVRE III PALEMBANG",
+    "coordinates": {
+      "lat": -3.2453736697686,
+      "lon": 104.441984095356
+    },
+    "kapasitas": 8,
+    "okupansiSaatIni": 6,
+    "kondisi": "Sangat Baik (Terawat)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-35",
+    "nama": "RUMAH SINGGAH PENANGGIRAN",
+    "type": "Rumah Singgah",
+    "lokasiStasiun": "Stasiun Penanggiran",
+    "alamat": "Stasiun Penanggiran, Panang Jaya, Gunung Megang, Kab. Muara Enim, Sumatera Selatan 31351",
+    "divre": "III. DIVRE III PALEMBANG",
+    "coordinates": {
+      "lat": -3.48212575246395,
+      "lon": 103.812920030986
+    },
+    "kapasitas": 8,
+    "okupansiSaatIni": 3,
+    "kondisi": "Sangat Baik (Terawat)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-36",
+    "nama": "RUMAH SINGGAH MUARAGULA II",
+    "type": "Rumah Singgah",
+    "lokasiStasiun": "Stasiun Muaragula",
+    "alamat": "Stasiun Muara Gula, Muara Gula Baru, Ujanmas, Kab. Muara Enim, Sumatera Selatan 31351",
+    "divre": "III. DIVRE III PALEMBANG",
+    "coordinates": {
+      "lat": -3.58394145557891,
+      "lon": 103.775766795703
+    },
+    "kapasitas": 8,
+    "okupansiSaatIni": 2,
+    "kondisi": "Cukup (Perlu Renovasi Sanitasi)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-37",
+    "nama": "RUMAH SINGGAH MERAPI",
+    "type": "Rumah Singgah",
+    "lokasiStasiun": "Stasiun Merapi",
+    "alamat": "Stasiun Merapi, Merapi, Merapi Barat, Kab. Lahat, Sumatera Selatan 31471",
+    "divre": "III. DIVRE III PALEMBANG",
+    "coordinates": {
+      "lat": -3.73970291817365,
+      "lon": 103.676201064369
+    },
+    "kapasitas": 8,
+    "okupansiSaatIni": 5,
+    "kondisi": "Sangat Baik (Terawat)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-38",
+    "nama": "RUMAH SINGGAH RENGAS",
+    "type": "Rumah Singgah",
+    "lokasiStasiun": "Stasiun Rengas",
+    "alamat": "Stasiun Rengas, Bangunsari, Bekri, Kab. Lampung Tengah, Lampung 34162",
+    "divre": "IV. DIVRE IV TANJUNGKARANG",
+    "coordinates": {
+      "lat": -5.13423665593377,
+      "lon": 105.154852816363
+    },
+    "kapasitas": 8,
+    "okupansiSaatIni": 3,
+    "kondisi": "Sangat Baik (Terawat)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-39",
+    "nama": "RUMAH SINGGAH NEGERI AGUNG",
+    "type": "Rumah Singgah",
+    "lokasiStasiun": "Stasiun Negeri Agung",
+    "alamat": "Stasiun Negeri Agung, Negeri Agung, Negeri Agung, Kab. Way Kanan, Lampung 34769",
+    "divre": "IV. DIVRE IV TANJUNGKARANG",
+    "coordinates": {
+      "lat": -4.57209419581889,
+      "lon": 104.606488805767
+    },
+    "kapasitas": 8,
+    "okupansiSaatIni": 2,
+    "kondisi": "Sangat Baik (Terawat)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-40",
+    "nama": "RUMAH SINGGAH SUNGAI TUHA",
+    "type": "Rumah Singgah",
+    "lokasiStasiun": "Stasiun Sungai Tuha",
+    "alamat": "Stasiun Sungai Tuha, Terukis Rahayu, Martapura, Kab. Ogan Komering Ulu Timur, Sumatera Selatan 32312",
+    "divre": "IV. DIVRE IV TANJUNGKARANG",
+    "coordinates": {
+      "lat": -4.28259910821324,
+      "lon": 104.32088033133
+    },
+    "kapasitas": 8,
+    "okupansiSaatIni": 6,
+    "kondisi": "Sangat Baik (Terawat)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-41",
+    "nama": "RUMAH SINGGAH GILAS",
+    "type": "Rumah Singgah",
+    "lokasiStasiun": "Stasiun Gilas",
+    "alamat": "Stasiun Gilas, Sungai Tuha Jaya, Martapura, Kab. Ogan Komering Ulu Timur, Sumatera Selatan 32315",
+    "divre": "IV. DIVRE IV TANJUNGKARANG",
+    "coordinates": {
+      "lat": -4.26444999073495,
+      "lon": 104.286541853605
+    },
+    "kapasitas": 8,
+    "okupansiSaatIni": 6,
+    "kondisi": "Sangat Baik (Terawat)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-42",
+    "nama": "RUMAH SINGGAH TANJUNG RAJO",
+    "type": "Rumah Singgah",
+    "lokasiStasiun": "Stasiun Tanjung Rajo",
+    "alamat": "Stasiun Tanjungrajo, Beringin Jaya, Way Tuba, Kab. Way Kanan, Lampung 34767",
+    "divre": "IV. DIVRE IV TANJUNGKARANG",
+    "coordinates": {
+      "lat": -4.40790042492563,
+      "lon": 104.462506127937
+    },
+    "kapasitas": 8,
+    "okupansiSaatIni": 6,
+    "kondisi": "Sangat Baik (Terawat)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-43",
+    "nama": "RUMAH SINGGAH WAY PISANG",
+    "type": "Rumah Singgah",
+    "lokasiStasiun": "Stasiun Way Pisang",
+    "alamat": "Stasiun Way Pisang, Way Pisang, Way Tuba, Kab. Way Kanan, Lampung 34767",
+    "divre": "IV. DIVRE IV TANJUNGKARANG",
+    "coordinates": {
+      "lat": -4.34994267097131,
+      "lon": 104.386571532909
+    },
+    "kapasitas": 8,
+    "okupansiSaatIni": 4,
+    "kondisi": "Cukup (Perlu Renovasi Sanitasi)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-44",
+    "nama": "RUMAH SINGGAH LUBUK BATANG",
+    "type": "Rumah Singgah",
+    "lokasiStasiun": "Stasiun Lubuk Batang",
+    "alamat": "Stasiun Lubuk Batang, Tanjung Dalam, Lubuk Batang, Kab. Ogan Komering Ulu, Sumatera Selatan 32192",
+    "divre": "IV. DIVRE IV TANJUNGKARANG",
+    "coordinates": {
+      "lat": -4.05748455316722,
+      "lon": 104.217848093106
+    },
+    "kapasitas": 8,
+    "okupansiSaatIni": 3,
+    "kondisi": "Sangat Baik (Terawat)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-45",
+    "nama": "RUMAH SINGGAH AIR ASAM",
+    "type": "Rumah Singgah",
+    "lokasiStasiun": "Stasiun Air Asam",
+    "alamat": "Stasiun Air Asam, Air Asam, Lubai, Kab. Muara Enim, Sumatera Selatan 31173",
+    "divre": "IV. DIVRE IV TANJUNGKARANG",
+    "coordinates": {
+      "lat": -3.647217241,
+      "lon": 104.3008252
+    },
+    "kapasitas": 8,
+    "okupansiSaatIni": 5,
+    "kondisi": "Sangat Baik (Terawat)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-46",
+    "nama": "RUMAH SINGGAH SUKA MERINDU",
+    "type": "Rumah Singgah",
+    "lokasiStasiun": "Stasiun Suka Merindu",
+    "alamat": "Stasiun Sukamerindu, Sukamerindu, Lubai, Kab. Muara Enim, Sumatera Selatan 31173",
+    "divre": "IV. DIVRE IV TANJUNGKARANG",
+    "coordinates": {
+      "lat": -3.60028,
+      "lon": 104.27528
+    },
+    "kapasitas": 8,
+    "okupansiSaatIni": 5,
+    "kondisi": "Sangat Baik (Terawat)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-47",
+    "nama": "RUMAH SINGGAH KOTA BARU",
+    "type": "Rumah Singgah",
+    "lokasiStasiun": "Stasiun Kota Baru",
+    "alamat": "Stasiun Kotabaru, Kotabaru, Lubai, Kab. Muara Enim, Sumatera Selatan 31173",
+    "divre": "IV. DIVRE IV TANJUNGKARANG",
+    "coordinates": {
+      "lat": -3.72694,
+      "lon": 104.33583
+    },
+    "kapasitas": 8,
+    "okupansiSaatIni": 4,
+    "kondisi": "Sangat Baik (Terawat)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-48",
+    "nama": "RUMAH SINGGAH PAGAR GUNUNG",
+    "type": "Rumah Singgah",
+    "lokasiStasiun": "Stasiun Pagar Gunung",
+    "alamat": "Stasiun Pagar Gunung, Pagar Gunung, Lubai, Kab. Muara Enim, Sumatera Selatan 31173",
+    "divre": "IV. DIVRE IV TANJUNGKARANG",
+    "coordinates": {
+      "lat": -3.69083,
+      "lon": 104.31278
+    },
+    "kapasitas": 8,
+    "okupansiSaatIni": 6,
+    "kondisi": "Sangat Baik (Terawat)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-49",
+    "nama": "RUMAH SINGGAH BLIMBING AIR KAKA",
+    "type": "Rumah Singgah",
+    "lokasiStasiun": "Stasiun Blimbing Air Kaka",
+    "alamat": "Stasiun Belimbing Airkaka, Kedondong, Peninjauan, Kab. Ogan Komering Ulu, Sumatera Selatan 32191",
+    "divre": "IV. DIVRE IV TANJUNGKARANG",
+    "coordinates": {
+      "lat": -3.991188,
+      "lon": 104.292
+    },
+    "kapasitas": 8,
+    "okupansiSaatIni": 2,
+    "kondisi": "Sangat Baik (Terawat)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-50",
+    "nama": "RUMAH SINGGAH TALANG BARU",
+    "type": "Rumah Singgah",
+    "lokasiStasiun": "Stasiun Talang Baru",
+    "alamat": "Stasiun Talangbaru, Peninjauan, Peninjauan, Kab. Ogan Komering Ulu, Sumatera Selatan 32191",
+    "divre": "IV. DIVRE IV TANJUNGKARANG",
+    "coordinates": {
+      "lat": -3.84444,
+      "lon": 104.3675
+    },
+    "kapasitas": 8,
+    "okupansiSaatIni": 3,
+    "kondisi": "Cukup (Perlu Renovasi Sanitasi)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  },
+  {
+    "id": "RS-51",
+    "nama": "RUMAH SINGGAH DURIAN",
+    "type": "Rumah Singgah",
+    "lokasiStasiun": "Stasiun Durian",
+    "alamat": "Stasiun Durian, Belimbing, Peninjauan, Kab. Ogan Komering Ulu, Sumatera Selatan 32191",
+    "divre": "IV. DIVRE IV TANJUNGKARANG",
+    "coordinates": {
+      "lat": -3.97111,
+      "lon": 104.31083
+    },
+    "kapasitas": 8,
+    "okupansiSaatIni": 5,
+    "kondisi": "Sangat Baik (Terawat)",
+    "fasilitas": {
+      "kamarTidurBerAc": "Tersedia 4 - 8 Kamar",
+      "tempatTidurSingle": "Kasur Busa Tebal & Linen Bersih",
+      "kamarMandiMck": "2 - 4 Kamar Mandi Bersih dengan Shower",
+      "dapurPantry": "Dispenser, Kulkas, Alat Masak Dasar",
+      "ruangIstirahat": "TV Kabel & Wi-Fi KAI internal",
+      "kebersihan": "Petugas Cleaning Service Harian"
+    }
+  }
+]

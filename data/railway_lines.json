@@ -1,0 +1,796 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Lintas Utama Medan - Rantau Prapat",
+        "divre": "DIVRE I SUMATERA UTARA",
+        "totalStations": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            98.679742,
+            3.590878
+          ],
+          [
+            98.7461,
+            3.5878
+          ],
+          [
+            98.8028,
+            3.6083
+          ],
+          [
+            98.8686,
+            3.5786
+          ],
+          [
+            98.8817,
+            3.5619
+          ],
+          [
+            98.9619,
+            3.5686
+          ],
+          [
+            99.0142,
+            3.5583
+          ],
+          [
+            99.0436,
+            3.5411
+          ],
+          [
+            99.0683,
+            3.4864
+          ],
+          [
+            99.0712,
+            3.4475
+          ],
+          [
+            99.168409,
+            3.327089
+          ],
+          [
+            99.2845,
+            3.2512
+          ],
+          [
+            99.3178,
+            3.2081
+          ],
+          [
+            99.3361,
+            3.1894
+          ],
+          [
+            99.3625,
+            3.17583
+          ],
+          [
+            99.4239,
+            3.1611
+          ],
+          [
+            99.4936,
+            3.1217
+          ],
+          [
+            99.5383,
+            3.0847
+          ],
+          [
+            99.5819,
+            3.0411
+          ],
+          [
+            99.62361,
+            2.98639
+          ],
+          [
+            99.6486,
+            2.9117
+          ],
+          [
+            99.6833,
+            2.8436
+          ],
+          [
+            99.7186,
+            2.7686
+          ],
+          [
+            99.7369,
+            2.7011
+          ],
+          [
+            99.7583,
+            2.6144
+          ],
+          [
+            99.7711,
+            2.5286
+          ],
+          [
+            99.7847,
+            2.4519
+          ],
+          [
+            99.7981,
+            2.3789
+          ],
+          [
+            99.8058,
+            2.2964
+          ],
+          [
+            99.81694,
+            2.1125
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Lintas Medan - Binjai - Kuala Bingai",
+        "divre": "DIVRE I SUMATERA UTARA",
+        "totalStations": 3
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            98.679742,
+            3.590878
+          ],
+          [
+            98.4856,
+            3.6027
+          ],
+          [
+            98.4619,
+            3.6481
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Lintas Medan - Pulu Brayan - Belawan",
+        "divre": "DIVRE I SUMATERA UTARA",
+        "totalStations": 5
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            98.679742,
+            3.590878
+          ],
+          [
+            98.6783,
+            3.6264
+          ],
+          [
+            98.6852,
+            3.7335
+          ],
+          [
+            98.6826,
+            3.7845
+          ],
+          [
+            98.6912,
+            3.7915
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Lintas Tebing Tinggi - Siantar",
+        "divre": "DIVRE I SUMATERA UTARA",
+        "totalStations": 4
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            99.168409,
+            3.327089
+          ],
+          [
+            99.1419,
+            3.2386
+          ],
+          [
+            99.1208,
+            3.1242
+          ],
+          [
+            99.0631,
+            2.9636
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Lintas Bandar Tinggi - Kuala Tanjung",
+        "divre": "DIVRE I SUMATERA UTARA",
+        "totalStations": 4
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            99.3178,
+            3.2081
+          ],
+          [
+            99.3456,
+            3.2981
+          ],
+          [
+            99.3811,
+            3.3325
+          ],
+          [
+            99.4489,
+            3.3614
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Lintas Perlanaan - Sei Mangke",
+        "divre": "DIVRE I SUMATERA UTARA",
+        "totalStations": 3
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            99.3625,
+            3.17583
+          ],
+          [
+            99.3989,
+            3.1511
+          ],
+          [
+            99.4311,
+            3.1386
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Lintas Kisaran - Tanjungbalai",
+        "divre": "DIVRE I SUMATERA UTARA",
+        "totalStations": 2
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            99.62361,
+            2.98639
+          ],
+          [
+            99.7997,
+            2.9644
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Lintas Padang - Pariaman - Naras",
+        "divre": "DIVRE II SUMATERA BARAT",
+        "totalStations": 12
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            100.37437,
+            -0.94352
+          ],
+          [
+            100.3686,
+            -0.9236
+          ],
+          [
+            100.3589,
+            -0.9067
+          ],
+          [
+            100.3475,
+            -0.8872
+          ],
+          [
+            100.3283,
+            -0.8358
+          ],
+          [
+            100.2981,
+            -0.7719
+          ],
+          [
+            100.2889,
+            -0.7386
+          ],
+          [
+            100.2797,
+            -0.6811
+          ],
+          [
+            100.2289,
+            -0.6614
+          ],
+          [
+            100.1711,
+            -0.6486
+          ],
+          [
+            100.1205,
+            -0.6225
+          ],
+          [
+            100.097893,
+            -0.570859
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Lintas Duku - Bandara BIM",
+        "divre": "DIVRE II SUMATERA BARAT",
+        "totalStations": 2
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            100.2981,
+            -0.7719
+          ],
+          [
+            100.2831,
+            -0.7872
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Lintas Lubuk Alung - Kayutanam",
+        "divre": "DIVRE II SUMATERA BARAT",
+        "totalStations": 3
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            100.2797,
+            -0.6811
+          ],
+          [
+            100.3014,
+            -0.6128
+          ],
+          [
+            100.331173,
+            -0.548056
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Lintas Padang - Indarung",
+        "divre": "DIVRE II SUMATERA BARAT",
+        "totalStations": 5
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            100.3619,
+            -0.9664
+          ],
+          [
+            100.37437,
+            -0.94352
+          ],
+          [
+            100.3814,
+            -0.9761
+          ],
+          [
+            100.4183,
+            -0.9619
+          ],
+          [
+            100.46333,
+            -0.95222
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Lintas Kertapati - Prabumulih",
+        "divre": "DIVRE III PALEMBANG",
+        "totalStations": 9
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            104.75139,
+            -3.01667
+          ],
+          [
+            104.7317,
+            -3.0489
+          ],
+          [
+            104.700193,
+            -3.103756
+          ],
+          [
+            104.60111,
+            -3.20306
+          ],
+          [
+            104.5229,
+            -3.22006
+          ],
+          [
+            104.44198,
+            -3.24537
+          ],
+          [
+            104.3683,
+            -3.2981
+          ],
+          [
+            104.3014,
+            -3.3411
+          ],
+          [
+            104.2389,
+            -3.4358
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Lintas Prabumulih - Muara Enim - Lubuklinggau",
+        "divre": "DIVRE III PALEMBANG",
+        "totalStations": 20
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            104.2389,
+            -3.4358
+          ],
+          [
+            104.2189,
+            -3.4419
+          ],
+          [
+            104.2011,
+            -3.4486
+          ],
+          [
+            104.1486,
+            -3.4475
+          ],
+          [
+            104.06111,
+            -3.45583
+          ],
+          [
+            103.9683,
+            -3.4681
+          ],
+          [
+            103.8894,
+            -3.4736
+          ],
+          [
+            103.81292,
+            -3.48213
+          ],
+          [
+            103.7919,
+            -3.5286
+          ],
+          [
+            103.77577,
+            -3.58394
+          ],
+          [
+            103.7761,
+            -3.6514
+          ],
+          [
+            103.7486,
+            -3.7314
+          ],
+          [
+            103.62475,
+            -3.77866
+          ],
+          [
+            103.5819,
+            -3.7811
+          ],
+          [
+            103.54167,
+            -3.79028
+          ],
+          [
+            103.4683,
+            -3.7214
+          ],
+          [
+            103.3514,
+            -3.6186
+          ],
+          [
+            103.2014,
+            -3.5186
+          ],
+          [
+            103.0411,
+            -3.4114
+          ],
+          [
+            102.86432,
+            -3.29343
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Percabangan Muara Enim - Tanjungenim Baru",
+        "divre": "DIVRE III PALEMBANG",
+        "totalStations": 2
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            103.7761,
+            -3.6514
+          ],
+          [
+            103.80194,
+            -3.70889
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Lintas Prabumulih - Baturaja - Tanjungkarang - Tarahan",
+        "divre": "DIVRE IV TANJUNGKARANG",
+        "totalStations": 45
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            104.2389,
+            -3.4358
+          ],
+          [
+            104.27528,
+            -3.60028
+          ],
+          [
+            104.30083,
+            -3.64722
+          ],
+          [
+            104.33583,
+            -3.72694
+          ],
+          [
+            104.3675,
+            -3.84444
+          ],
+          [
+            104.31083,
+            -3.97111
+          ],
+          [
+            104.292,
+            -3.99119
+          ],
+          [
+            104.3286,
+            -3.9114
+          ],
+          [
+            104.2583,
+            -4.0114
+          ],
+          [
+            104.2386,
+            -4.0386
+          ],
+          [
+            104.21785,
+            -4.05748
+          ],
+          [
+            104.16722,
+            -4.10694
+          ],
+          [
+            104.16028,
+            -4.125
+          ],
+          [
+            104.1814,
+            -4.1683
+          ],
+          [
+            104.2211,
+            -4.2186
+          ],
+          [
+            104.28654,
+            -4.26445
+          ],
+          [
+            104.32088,
+            -4.2826
+          ],
+          [
+            104.3514,
+            -4.3186
+          ],
+          [
+            104.38657,
+            -4.34994
+          ],
+          [
+            104.4211,
+            -4.3786
+          ],
+          [
+            104.46251,
+            -4.4079
+          ],
+          [
+            104.5186,
+            -4.4714
+          ],
+          [
+            104.5514,
+            -4.5186
+          ],
+          [
+            104.60649,
+            -4.57209
+          ],
+          [
+            104.6814,
+            -4.6414
+          ],
+          [
+            104.7486,
+            -4.7114
+          ],
+          [
+            104.8114,
+            -4.7686
+          ],
+          [
+            104.8486,
+            -4.7964
+          ],
+          [
+            104.8875,
+            -4.8219
+          ],
+          [
+            104.9386,
+            -4.8814
+          ],
+          [
+            104.9814,
+            -4.9214
+          ],
+          [
+            105.0314,
+            -4.9814
+          ],
+          [
+            105.0814,
+            -5.0486
+          ],
+          [
+            105.1186,
+            -5.0986
+          ],
+          [
+            105.1386,
+            -5.1186
+          ],
+          [
+            105.15485,
+            -5.13424
+          ],
+          [
+            105.1886,
+            -5.2014
+          ],
+          [
+            105.2086,
+            -5.2514
+          ],
+          [
+            105.2186,
+            -5.2986
+          ],
+          [
+            105.2314,
+            -5.3386
+          ],
+          [
+            105.2486,
+            -5.3786
+          ],
+          [
+            105.2589,
+            -5.4092
+          ],
+          [
+            105.2814,
+            -5.4414
+          ],
+          [
+            105.3086,
+            -5.4686
+          ],
+          [
+            105.33967,
+            -5.50776
+          ]
+        ]
+      }
+    }
+  ]
+}

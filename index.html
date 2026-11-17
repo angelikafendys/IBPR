@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KAI Rail-Safety & IBPR Mapping System | Area 2 Sumatera</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            kai: {
+              blue: '#1b3e6f',
+              darkblue: '#0d2342',
+              orange: '#f26522',
+              hoverOrange: '#d9531e'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Leaflet CSS & JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    /* Custom pulse animation for high risk markers */
+    @keyframes pulse-red {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.35); opacity: 0.6; }
+    }
+    .pulse-danger {
+      animation: pulse-red 1.8s infinite ease-in-out;
+    }
+    /* Custom scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0f172a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #475569;
+    }
+    /* Railway track styling helpers */
+    .railway-base {
+      stroke: #0f172a;
+      stroke-width: 6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .railway-dashes {
+      stroke: #f8fafc;
+      stroke-width: 2.5;
+      stroke-dasharray: 6, 8;
+      stroke-linecap: butt;
+    }
+    /* Leaflet popup styling */
+    .leaflet-popup-content-wrapper {
+      background: #1e293b !important;
+      color: #f1f5f9 !important;
+      border-radius: 0.75rem !important;
+      border: 1px solid #334155 !important;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5) !important;
+    }
+    .leaflet-popup-tip {
+      background: #1e293b !important;
+      border: 1px solid #334155 !important;
+    }
+    .leaflet-container {
+      background: #090d16 !important;
+    }
+  </style>
+
+  <!-- Load bundled dataset -->
+  <script src="data/data_bundle.js"></script>
+</head>
+<body class="bg-slate-950 text-slate-100 h-screen flex flex-col overflow-hidden">
+
+  <!-- ================= TOP NAVBAR ================= -->
+  <header class="bg-slate-900/90 backdrop-blur border-b border-slate-800 z-30 px-4 py-2.5 flex items-center justify-between shadow-lg">
+    <div class="flex items-center space-x-3">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-kai-blue to-kai-orange flex items-center justify-center shadow-md shadow-kai-orange/20">
+        <i data-lucide="train" class="w-6 h-6 text-white"></i>
+      </div>
+      <div>
+        <div class="flex items-center space-x-2">
+          <h1 class="text-lg font-bold tracking-tight text-white flex items-center gap-2">
+            KAI IBPR & MAPPING INTEGRATION
+            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-kai-orange text-white">AREA 2 SUMATERA</span>
+          </h1>
+        </div>
+        <p class="text-xs text-slate-400">Monitoring Geospasial, Analisis Risiko IBPR, & Manajemen Personel (PJL, PPKA, Langsir)</p>
+      </div>
+    </div>
+
+    <!-- Quick Executive KPIs -->
+    <div class="hidden xl:flex items-center space-x-3">
+      <div class="bg-slate-800/80 border border-slate-700/60 rounded-lg px-3 py-1.5 flex items-center space-x-2.5">
+        <div class="w-2.5 h-2.5 rounded-full bg-blue-500"></div>
+        <div>
+          <div class="text-[10px] text-slate-400 font-medium">TOTAL JPL</div>
+          <div class="text-sm font-bold text-slate-100" id="kpi-total-jpl">654</div>
+        </div>
+      </div>
+
+      <div class="bg-red-950/40 border border-red-800/50 rounded-lg px-3 py-1.5 flex items-center space-x-2.5">
+        <div class="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping"></div>
+        <div>
+          <div class="text-[10px] text-red-300 font-medium">JPL RISIKO EKSTRIM</div>
+          <div class="text-sm font-bold text-red-400" id="kpi-extreme-jpl">0</div>
+        </div>
+      </div>
+
+      <div class="bg-amber-950/40 border border-amber-800/50 rounded-lg px-3 py-1.5 flex items-center space-x-2.5">
+        <div class="w-2.5 h-2.5 rounded-full bg-amber-500"></div>
+        <div>
+          <div class="text-[10px] text-amber-300 font-medium">DEFISIT PERSONEL PJL</div>
+          <div class="text-sm font-bold text-amber-400" id="kpi-deficit-pjl">0 Org</div>
+        </div>
+      </div>
+
+      <div class="bg-slate-800/80 border border-slate-700/60 rounded-lg px-3 py-1.5 flex items-center space-x-2.5">
+        <div class="w-2.5 h-2.5 rounded-full bg-emerald-500"></div>
+        <div>
+          <div class="text-[10px] text-slate-400 font-medium">STASIUN AKTIF</div>
+          <div class="text-sm font-bold text-slate-100" id="kpi-total-stations">139</div>
+        </div>
+      </div>
+
+      <div class="bg-purple-950/40 border border-purple-800/50 rounded-lg px-3 py-1.5 flex items-center space-x-2.5">
+        <div class="w-2.5 h-2.5 rounded-full bg-purple-400"></div>
+        <div>
+          <div class="text-[10px] text-purple-300 font-medium">RUMAH SINGGAH</div>
+          <div class="text-sm font-bold text-purple-300" id="kpi-total-resthouses">51</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="flex items-center space-x-2">
+      <button onclick="openAnalyticsModal()" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-lg text-xs font-semibold text-slate-200 flex items-center gap-1.5 transition">
+        <i data-lucide="bar-chart-3" class="w-4 h-4 text-kai-orange"></i>
+        <span>Statistik & IBPR</span>
+      </button>
+
+      <button onclick="exportDataCsv()" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-lg text-xs font-semibold text-slate-200 flex items-center gap-1.5 transition" title="Export CSV Data JPL">
+        <i data-lucide="download" class="w-4 h-4 text-emerald-400"></i>
+        <span>Export CSV</span>
+      </button>
+
+      <button onclick="toggleSidebar()" class="lg:hidden p-2 bg-slate-800 hover:bg-slate-700 rounded-lg text-slate-300">
+        <i data-lucide="menu" class="w-5 h-5"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- ================= MAIN LAYOUT ================= -->
+  <div class="flex-1 flex relative overflow-hidden">
+    
+    <!-- ================= LEFT SIDEBAR (FILTERS & DIRECTORY) ================= -->
+    <aside id="sidebar" class="w-80 lg:w-96 bg-slate-900 border-r border-slate-800 flex flex-col z-20 shrink-0 transition-all duration-300 absolute lg:relative h-full shadow-2xl">
+      
+      <!-- Search & Filters Container -->
+      <div class="p-3.5 border-b border-slate-800 space-y-3 bg-slate-900/95">
+        
+        <!-- Search Input -->
+        <div class="relative">
+          <i data-lucide="search" class="w-4 h-4 absolute left-3 top-2.5 text-slate-400"></i>
+          <input 
+            type="text" 
+            id="search-input" 
+            oninput="handleSearch()"
+            placeholder="Cari JPL, No, Jalan, Petak Antara..." 
+            class="w-full bg-slate-950/80 border border-slate-700/80 rounded-lg pl-9 pr-3 py-1.5 text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:border-kai-orange transition"
+          />
+        </div>
+
+        <!-- Filter Dropdowns Grid -->
+        <div class="grid grid-cols-2 gap-2 text-xs">
+          <!-- Filter Daop/Divre -->
+          <div>
+            <label class="block text-[10px] font-semibold text-slate-400 mb-1">WILAYAH (DIVRE)</label>
+            <select id="filter-divre" onchange="applyFilters()" class="w-full bg-slate-950 border border-slate-700 rounded-md px-2 py-1.5 text-slate-200 focus:outline-none focus:border-kai-orange">
+              <option value="ALL">Semua Divre (Area 2)</option>
+              <option value="DIVRE I SUMATERA UTARA">Divre I Sumut (342)</option>
+              <option value="DIVRE II SUMATERA BARAT">Divre II Sumbar (73)</option>
+              <option value="DIVRE III PALEMBANG">Divre III Palembang (77)</option>
+              <option value="DIVRE IV TANJUNGKARANG">Divre IV Tanjungkarang (162)</option>
+            </select>
+          </div>
+
+          <!-- Filter Tingkat Risiko IBPR -->
+          <div>
+            <label class="block text-[10px] font-semibold text-slate-400 mb-1">RISIKO IBPR</label>
+            <select id="filter-risk" onchange="applyFilters()" class="w-full bg-slate-950 border border-slate-700 rounded-md px-2 py-1.5 text-slate-200 focus:outline-none focus:border-kai-orange">
+              <option value="ALL">Semua Level Risiko</option>
+              <option value="Extreme">🔴 Extreme (Kritis)</option>
+              <option value="High">🟠 High (Tinggi)</option>
+              <option value="Medium">🟡 Medium (Sedang)</option>
+              <option value="Low">🟢 Low (Rendah)</option>
+            </select>
+          </div>
+
+          <!-- Filter Personel Deficit -->
+          <div>
+            <label class="block text-[10px] font-semibold text-slate-400 mb-1">STATUS PERSONEL</label>
+            <select id="filter-personnel" onchange="applyFilters()" class="w-full bg-slate-950 border border-slate-700 rounded-md px-2 py-1.5 text-slate-200 focus:outline-none focus:border-kai-orange">
+              <option value="ALL">Semua Status</option>
+              <option value="DEFICIT">⚠️ Ada Defisit Personil</option>
+              <option value="FULL">✅ Formasi Lengkap</option>
+              <option value="EMPTY">🚫 Tak Terjaga (Kosong)</option>
+            </select>
+          </div>
+
+          <!-- Filter Kategori Jalan -->
+          <div>
+            <label class="block text-[10px] font-semibold text-slate-400 mb-1">KATEGORI JALAN</label>
+            <select id="filter-road" onchange="applyFilters()" class="w-full bg-slate-950 border border-slate-700 rounded-md px-2 py-1.5 text-slate-200 focus:outline-none focus:border-kai-orange">
+              <option value="ALL">Semua Kategori</option>
+              <option value="NASIONAL">Jalan Nasional</option>
+              <option value="PROVINSI">Jalan Provinsi</option>
+              <option value="KABUPATEN">Kabupaten / Kota</option>
+              <option value="DESA">Desa / Lingkungan</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Layer Toggles Bar -->
+        <div class="pt-2 border-t border-slate-800/80">
+          <div class="text-[10px] font-semibold text-slate-400 mb-1.5 flex items-center justify-between">
+            <span>TOGGLE LAYER PETA</span>
+            <span class="text-slate-500 text-[9px]">Garis Rel Kustom & Titik</span>
+          </div>
+          <div class="flex items-center justify-between text-xs bg-slate-950/60 p-2 rounded-lg border border-slate-800">
+            <label class="flex items-center space-x-1.5 cursor-pointer">
+              <input type="checkbox" id="layer-rails" checked onchange="toggleLayers()" class="rounded bg-slate-800 border-slate-700 text-kai-orange focus:ring-0">
+              <span class="text-slate-300 font-medium text-[11px]">Garis Rel</span>
+            </label>
+            <label class="flex items-center space-x-1.5 cursor-pointer">
+              <input type="checkbox" id="layer-jpl" checked onchange="toggleLayers()" class="rounded bg-slate-800 border-slate-700 text-kai-orange focus:ring-0">
+              <span class="text-slate-300 font-medium text-[11px]">JPL</span>
+            </label>
+            <label class="flex items-center space-x-1.5 cursor-pointer">
+              <input type="checkbox" id="layer-stations" checked onchange="toggleLayers()" class="rounded bg-slate-800 border-slate-700 text-kai-orange focus:ring-0">
+              <span class="text-slate-300 font-medium text-[11px]">Stasiun</span>
+            </label>
+            <label class="flex items-center space-x-1.5 cursor-pointer">
+              <input type="checkbox" id="layer-resthouses" checked onchange="toggleLayers()" class="rounded bg-slate-800 border-slate-700 text-kai-orange focus:ring-0">
+              <span class="text-slate-300 font-medium text-[11px]">Mess</span>
+            </label>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Directory List Header -->
+      <div class="px-3.5 py-2 bg-slate-950 border-b border-slate-800 flex items-center justify-between text-xs">
+        <span class="text-slate-400 font-medium">Hasil Filter: <span id="list-count" class="text-kai-orange font-bold">654</span> Titik</span>
+        <button onclick="resetFilters()" class="text-[11px] text-slate-400 hover:text-slate-200 underline">Reset Filter</button>
+      </div>
+
+      <!-- Scrollable List of Points -->
+      <div id="points-list" class="flex-1 overflow-y-auto divide-y divide-slate-800/60 p-2 space-y-1">
+        <!-- Dynamically injected items -->
+      </div>
+      
+    </aside>
+
+    <!-- ================= MAP CONTAINER ================= -->
+    <main class="flex-1 relative h-full flex flex-col">
+      <div id="map" class="w-full h-full"></div>
+
+      <!-- Map Overlays / Floating Legend -->
+      <div class="absolute bottom-6 left-6 z-[1000] bg-slate-900/90 backdrop-blur border border-slate-800 rounded-xl p-3 shadow-2xl max-w-xs text-xs space-y-2 pointer-events-auto">
+        <div class="font-bold text-slate-200 text-xs flex items-center justify-between">
+          <span class="flex items-center gap-1.5">
+            <i data-lucide="shield-alert" class="w-4 h-4 text-kai-orange"></i>
+            LEGENDA RISIKO IBPR & PERSONEL
+          </span>
+        </div>
+        <div class="space-y-1.5 text-[11px]">
+          <div class="flex items-center space-x-2">
+            <span class="w-3.5 h-3.5 rounded-full bg-red-500 border border-white/50 shadow shadow-red-500/50"></span>
+            <span class="text-slate-300"><strong>Extreme Risk (Merah):</strong> Risiko Kritis & Defisit Personel</span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <span class="w-3.5 h-3.5 rounded-full bg-orange-500 border border-white/40 shadow shadow-orange-500/50"></span>
+            <span class="text-slate-300"><strong>High Risk (Oranye):</strong> Risiko Tinggi / Jalur Padat</span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <span class="w-3.5 h-3.5 rounded-full bg-yellow-400 border border-white/40 shadow shadow-yellow-500/50"></span>
+            <span class="text-slate-300"><strong>Medium Risk (Kuning):</strong> Risiko Sedang / Terjaga Parsial</span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <span class="w-3.5 h-3.5 rounded-full bg-emerald-500 border border-white/40 shadow shadow-emerald-500/50"></span>
+            <span class="text-slate-300"><strong>Low Risk (Hijau):</strong> Terjaga KAI & Formasi Lengkap</span>
+          </div>
+        </div>
+        <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between text-[10px] text-slate-400">
+          <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded bg-blue-500 inline-block"></span> Stasiun KA</span>
+          <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded bg-purple-500 inline-block"></span> Rumah Singgah</span>
+          <span class="flex items-center gap-1"><span class="w-4 h-1 bg-white border-b border-black inline-block"></span> Rel KA</span>
+        </div>
+      </div>
+
+      <!-- Quick Action Floating Bar -->
+      <div class="absolute top-4 right-4 z-[1000] flex items-center space-x-2">
+        <button onclick="focusExtremeRisk()" class="px-3 py-2 bg-red-600/90 hover:bg-red-500 text-white text-xs font-bold rounded-lg shadow-lg flex items-center gap-1.5 transition">
+          <i data-lucide="alert-triangle" class="w-4 h-4"></i>
+          <span>Fokus JPL Ekstrim</span>
+        </button>
+
+        <button onclick="zoomToSumatera()" class="px-3 py-2 bg-slate-800/90 hover:bg-slate-700 text-slate-200 text-xs font-semibold rounded-lg border border-slate-700 shadow-lg flex items-center gap-1.5 transition">
+          <i data-lucide="globe" class="w-4 h-4 text-blue-400"></i>
+          <span>Reset Zoom Peta</span>
+        </button>
+      </div>
+
+    </main>
+
+    <!-- ================= RIGHT DETAIL DRAWER (IBPR & PERSONEL DETAILS) ================= -->
+    <div id="detail-drawer" class="w-96 lg:w-[460px] bg-slate-900 border-l border-slate-800 flex flex-col z-30 shrink-0 transition-all duration-300 translate-x-full absolute right-0 top-0 bottom-0 shadow-2xl">
+      
+      <!-- Drawer Header -->
+      <div class="p-4 bg-slate-950 border-b border-slate-800 flex items-start justify-between">
+        <div>
+          <div class="flex items-center gap-2 mb-1">
+            <span id="drawer-badge-type" class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-blue-900 text-blue-300">JPL</span>
+            <span id="drawer-badge-risk" class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-red-900 text-red-200">EXTREME RISK</span>
+            <span id="drawer-badge-divre" class="text-xs text-slate-400">DIVRE I SUMUT</span>
+          </div>
+          <h2 id="drawer-title" class="text-base font-bold text-white leading-tight">JPL NO. 20 (KM 16+850)</h2>
+          <p id="drawer-subtitle" class="text-xs text-slate-400 mt-0.5">Petak Jalan: Medan - Binjai | Jl. Megawati</p>
+        </div>
+        <button onclick="closeDrawer()" class="p-1.5 hover:bg-slate-800 rounded-lg text-slate-400 hover:text-white transition">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Drawer Tabs -->
+      <div class="flex border-b border-slate-800 bg-slate-900 px-4 text-xs">
+        <button id="tab-btn-ibpr" onclick="switchDrawerTab('ibpr')" class="py-2.5 px-3 border-b-2 border-kai-orange text-kai-orange font-semibold flex items-center gap-1.5">
+          <i data-lucide="shield-alert" class="w-4 h-4"></i>
+          <span>IBPR & Risiko</span>
+        </button>
+        <button id="tab-btn-personnel" onclick="switchDrawerTab('personnel')" class="py-2.5 px-3 border-b-2 border-transparent text-slate-400 hover:text-slate-200 font-semibold flex items-center gap-1.5">
+          <i data-lucide="users" class="w-4 h-4"></i>
+          <span>Personel</span>
+        </button>
+        <button id="tab-btn-facilities" onclick="switchDrawerTab('facilities')" class="py-2.5 px-3 border-b-2 border-transparent text-slate-400 hover:text-slate-200 font-semibold flex items-center gap-1.5">
+          <i data-lucide="building" class="w-4 h-4"></i>
+          <span>Fasilitas</span>
+        </button>
+      </div>
+
+      <!-- Drawer Content Scroll Area -->
+      <div class="flex-1 overflow-y-auto p-4 space-y-4 text-xs" id="drawer-body">
+        <!-- Tab Content dynamically filled -->
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ================= ANALYTICS & STATS MODAL ================= -->
+  <div id="analytics-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-4xl w-full p-6 shadow-2xl space-y-6 max-h-[90vh] overflow-y-auto">
+      
+      <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+        <div>
+          <h3 class="text-lg font-bold text-white flex items-center gap-2">
+            <i data-lucide="bar-chart-2" class="w-5 h-5 text-kai-orange"></i>
+            DASHBOARD EKSEKUTIF IBPR & PERSONEL AREA 2
+          </h3>
+          <p class="text-xs text-slate-400">Analisis Matriks Identifikasi Bahaya, Penilaian Risiko, dan Pemenuhan Formasi Petugas</p>
+        </div>
+        <button onclick="closeAnalyticsModal()" class="p-2 hover:bg-slate-800 rounded-lg text-slate-400 hover:text-white">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Charts Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Chart 1: Risk Distribution -->
+        <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
+          <h4 class="font-bold text-slate-200 text-xs mb-3 flex items-center gap-1.5">
+            <i data-lucide="pie-chart" class="w-4 h-4 text-red-400"></i>
+            Distribusi Tingkat Risiko IBPR (654 Titik JPL)
+          </h4>
+          <div class="h-60 relative flex items-center justify-center">
+            <canvas id="chart-risk-dist"></canvas>
+          </div>
+        </div>
+
+        <!-- Chart 2: Deficit by Divre -->
+        <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
+          <h4 class="font-bold text-slate-200 text-xs mb-3 flex items-center gap-1.5">
+            <i data-lucide="users" class="w-4 h-4 text-amber-400"></i>
+            Status Ketersediaan Personil PJL per Divre
+          </h4>
+          <div class="h-60 relative flex items-center justify-center">
+            <canvas id="chart-personnel-divre"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Road Category & Priority Insight -->
+      <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-3">
+        <h4 class="font-bold text-slate-200 text-xs flex items-center gap-1.5">
+          <i data-lucide="info" class="w-4 h-4 text-blue-400"></i>
+          Rekomendasi Kebijakan K3 & Mitigasi Operasional
+        </h4>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+          <div class="p-3 bg-red-950/30 border border-red-900/40 rounded-lg">
+            <div class="font-bold text-red-400 mb-1">Perlintasan Jalan Nasional (Prioritas 1)</div>
+            <p class="text-slate-400 text-[11px]">Segera lengkapi palang pintu elektrik otomatis dan penempatan 4 orang PJL organik KAI bersertifikat DJKA untuk pengawasan 24 jam penuh.</p>
+          </div>
+          <div class="p-3 bg-amber-950/30 border border-amber-900/40 rounded-lg">
+            <div class="font-bold text-amber-400 mb-1">Pengalihan Perlintasan Liar</div>
+            <p class="text-slate-400 text-[11px]">Koordinasi dengan Pemda & Dishub terkait penutupan ceceran jalan tikus serta pembangunan jalan frontage menuju JPL resmi terdekat.</p>
+          </div>
+          <div class="p-3 bg-emerald-950/30 border border-emerald-900/40 rounded-lg">
+            <div class="font-bold text-emerald-400 mb-1">Peningkatan Kelayakan Rumah Singgah</div>
+            <p class="text-slate-400 text-[11px]">Memastikan seluruh petugas PJL, PPKA, dan Langsir mendapatkan fasilitas istirahat dinas standar (AC, bed bersih, sanitasi layak) guna mencegah human error akibat fatigue.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= APP SCRIPT ================= -->
+  <script>
+    // Global State
+    let map;
+    let rawJpl = [];
+    let rawStations = [];
+    let rawRestHouses = [];
+    let rawRailwayLines = null;
+
+    let filteredJpls = [];
+    let markersLayerGroup;
+    let stationsLayerGroup;
+    let restHousesLayerGroup;
+    let railwayTracksLayerGroup;
+
+    let selectedItem = null;
+    let currentDrawerTab = 'ibpr';
+
+    // Initialize Map and Load Data
+    document.addEventListener('DOMContentLoaded', () => {
+      initMap();
+      loadData();
+      lucide.createIcons();
+    });
+
+    function initMap() {
+      // Centered on Central Sumatera (Area 2)
+      map = L.map('map', {
+        center: [-0.5, 101.5],
+        zoom: 7,
+        zoomControl: false
+      });
+
+      // Custom Zoom Control placed top-left
+      L.control.zoom({ position: 'topleft' }).addTo(map);
+
+      // Base Tile Layer: CartoDB Dark Matter for crisp operations dashboard
+      const darkTiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+        subdomains: 'abcd',
+        maxZoom: 19
+      }).addTo(map);
+
+      // Layer groups
+      railwayTracksLayerGroup = L.layerGroup().addTo(map);
+      markersLayerGroup = L.layerGroup().addTo(map);
+      stationsLayerGroup = L.layerGroup().addTo(map);
+      restHousesLayerGroup = L.layerGroup().addTo(map);
+    }
+
+    function loadData() {
+      if (window.KAI_DATA) {
+        rawJpl = window.KAI_DATA.jpl;
+        rawStations = window.KAI_DATA.stations;
+        rawRestHouses = window.KAI_DATA.restHouses;
+        rawRailwayLines = window.KAI_DATA.railwayLines;
+
+        updateKpiCounters();
+        renderCustomRailwayLines();
+        renderStations();
+        renderRestHouses();
+        applyFilters();
+      } else {
+        console.error("KAI_DATA bundle not found!");
+      }
+    }
+
+    function updateKpiCounters() {
+      document.getElementById('kpi-total-jpl').innerText = rawJpl.length;
+      
+      const extremeCount = rawJpl.filter(j => j.ibpr.riskLevel === 'Extreme').length;
+      document.getElementById('kpi-extreme-jpl').innerText = extremeCount;
+
+      const totalDeficit = rawJpl.reduce((sum, j) => sum + j.personnel.deficit, 0);
+      document.getElementById('kpi-deficit-pjl').innerText = `${totalDeficit} Org`;
+
+      document.getElementById('kpi-total-stations').innerText = rawStations.length;
+      document.getElementById('kpi-total-resthouses').innerText = rawRestHouses.length;
+    }
+
+    // ================= RENDER CUSTOM RAILWAY TRACKS LAYER =================
+    function renderCustomRailwayLines() {
+      railwayTracksLayerGroup.clearLayers();
+
+      if (!rawRailwayLines || !rawRailwayLines.features) return;
+
+      rawRailwayLines.features.forEach(feat => {
+        const latlngs = feat.geometry.coordinates.map(coord => [coord[1], coord[0]]);
+
+        // 1. Dark sleeper track base
+        const baseLine = L.polyline(latlngs, {
+          color: '#0f172a',
+          weight: 7,
+          opacity: 0.9,
+          lineCap: 'round',
+          lineJoin: 'round'
+        });
+
+        // 2. High-contrast metallic railway dashes (standard cartographic railroad track representation)
+        const dashLine = L.polyline(latlngs, {
+          color: '#cbd5e1',
+          weight: 3,
+          dashArray: '8, 10',
+          opacity: 0.95
+        });
+
+        // 3. Center subtle electric line
+        const centerLine = L.polyline(latlngs, {
+          color: '#38bdf8',
+          weight: 1.5,
+          opacity: 0.5
+        });
+
+        const group = L.featureGroup([baseLine, dashLine, centerLine]);
+        group.bindTooltip(`<b>${feat.properties.name}</b><br><span class="text-xs text-slate-400">${feat.properties.divre}</span>`, {
+          sticky: true
+        });
+
+        railwayTracksLayerGroup.addLayer(group);
+      });
+    }
+
+    // ================= RENDER STATIONS & REST HOUSES =================
+    function renderStations() {
+      stationsLayerGroup.clearLayers();
+
+      rawStations.forEach(st => {
+        const iconHtml = `
+          <div class="relative group cursor-pointer">
+            <div class="w-6 h-6 rounded-lg bg-blue-600 border border-white shadow-md flex items-center justify-center text-white text-[10px] font-bold">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+            </div>
+            ${st.personnel.totalDeficit > 0 ? `<span class="absolute -top-1 -right-1 w-3 h-3 bg-amber-500 rounded-full border border-slate-900 text-[8px] flex items-center justify-center font-bold text-black">!</span>` : ''}
+          </div>
+        `;
+
+        const icon = L.divIcon({
+          html: iconHtml,
+          className: '',
+          iconSize: [24, 24],
+          iconAnchor: [12, 12]
+        });
+
+        const marker = L.marker([st.coordinates.lat, st.coordinates.lon], { icon });
+        marker.bindTooltip(`<b>Stasiun ${st.name} (${st.code})</b><br>${st.class} | Defisit: ${st.personnel.totalDeficit} Org`);
+        marker.on('click', () => openStationDetails(st));
+
+        stationsLayerGroup.addLayer(marker);
+      });
+    }
+
+    function renderRestHouses() {
+      restHousesLayerGroup.clearLayers();
+
+      rawRestHouses.forEach(rh => {
+        const iconHtml = `
+          <div class="cursor-pointer">
+            <div class="w-5 h-5 rounded-md bg-purple-600 border border-purple-200 shadow flex items-center justify-center text-white text-[9px]">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg>
+            </div>
+          </div>
+        `;
+
+        const icon = L.divIcon({
+          html: iconHtml,
+          className: '',
+          iconSize: [20, 20],
+          iconAnchor: [10, 10]
+        });
+
+        const marker = L.marker([rh.coordinates.lat, rh.coordinates.lon], { icon });
+        marker.bindTooltip(`<b>${rh.nama}</b><br>${rh.lokasiStasiun}<br>Kapasitas: ${rh.kapasitas} Bed`);
+        marker.on('click', () => openRestHouseDetails(rh));
+
+        restHousesLayerGroup.addLayer(marker);
+      });
+    }
+
+    // ================= APPLY FILTERS & RENDER JPL MARKERS =================
+    function applyFilters() {
+      const divreFilter = document.getElementById('filter-divre').value;
+      const riskFilter = document.getElementById('filter-risk').value;
+      const personnelFilter = document.getElementById('filter-personnel').value;
+      const roadFilter = document.getElementById('filter-road').value;
+      const searchText = document.getElementById('search-input').value.toLowerCase().trim();
+
+      filteredJpls = rawJpl.filter(item => {
+        // Divre
+        if (divreFilter !== 'ALL' && item.daopDivre !== divreFilter) return false;
+        // Risk
+        if (riskFilter !== 'ALL' && item.ibpr.riskLevel !== riskFilter) return false;
+        // Personnel
+        if (personnelFilter === 'DEFICIT' && item.personnel.deficit === 0) return false;
+        if (personnelFilter === 'FULL' && item.personnel.deficit > 0) return false;
+        if (personnelFilter === 'EMPTY' && item.personnel.existing > 0) return false;
+        // Road
+        if (roadFilter !== 'ALL' && !item.kategoriJalan.toUpperCase().includes(roadFilter)) return false;
+        // Search text
+        if (searchText) {
+          const matchNo = item.noJpl.toLowerCase().includes(searchText);
+          const matchAntara = item.antara.toLowerCase().includes(searchText);
+          const matchJalan = item.namaJalan.toLowerCase().includes(searchText);
+          const matchKab = item.kabKota.toLowerCase().includes(searchText);
+          if (!matchNo && !matchAntara && !matchJalan && !matchKab) return false;
+        }
+
+        return true;
+      });
+
+      document.getElementById('list-count').innerText = filteredJpls.length;
+      renderJplMarkers();
+      renderPointsList();
+    }
+
+    function renderJplMarkers() {
+      markersLayerGroup.clearLayers();
+
+      filteredJpls.forEach(jpl => {
+        const color = jpl.ibpr.markerColor; // red, orange, yellow, green
+        const isExtreme = jpl.ibpr.riskLevel === 'Extreme';
+
+        const colorMap = {
+          red: { bg: 'bg-red-500', border: 'border-red-200', pulse: 'bg-red-400' },
+          orange: { bg: 'bg-orange-500', border: 'border-orange-200', pulse: 'bg-orange-400' },
+          yellow: { bg: 'bg-yellow-400', border: 'border-yellow-100', pulse: 'bg-yellow-300' },
+          green: { bg: 'bg-emerald-500', border: 'border-emerald-100', pulse: 'bg-emerald-300' }
+        };
+
+        const c = colorMap[color] || colorMap.red;
+
+        const iconHtml = `
+          <div class="relative cursor-pointer group">
+            ${isExtreme ? `<div class="absolute -inset-1 rounded-full ${c.pulse} opacity-75 pulse-danger"></div>` : ''}
+            <div class="w-4 h-4 rounded-full ${c.bg} border-2 ${c.border} shadow-lg relative flex items-center justify-center">
+              <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+            </div>
+          </div>
+        `;
+
+        const icon = L.divIcon({
+          html: iconHtml,
+          className: '',
+          iconSize: [16, 16],
+          iconAnchor: [8, 8]
+        });
+
+        const marker = L.marker([jpl.coordinates.lat, jpl.coordinates.lon], { icon });
+
+        // Tooltip
+        const tipContent = `
+          <div class="text-xs space-y-1">
+            <div class="font-bold text-white flex items-center justify-between gap-2">
+              <span>${jpl.noJpl} (${jpl.kmHm})</span>
+              <span class="px-1.5 py-0.2 rounded text-[10px] ${color === 'red' ? 'bg-red-900 text-red-200' : color === 'orange' ? 'bg-orange-900 text-orange-200' : 'bg-emerald-900 text-emerald-200'}">${jpl.ibpr.riskLevel}</span>
+            </div>
+            <div class="text-slate-300">${jpl.namaJalan} | ${jpl.antara}</div>
+            <div class="text-[11px] text-slate-400">Status: <strong class="text-slate-200">${jpl.guardStatus}</strong></div>
+            <div class="text-[11px] text-amber-300">Formasi: Butuh ${jpl.personnel.needed} | Ada ${jpl.personnel.existing} (${jpl.personnel.status})</div>
+          </div>
+        `;
+        marker.bindTooltip(tipContent, { direction: 'top', offset: [0, -8] });
+
+        marker.on('click', () => openJplDetails(jpl));
+        markersLayerGroup.addLayer(marker);
+      });
+    }
+
+    function renderPointsList() {
+      const container = document.getElementById('points-list');
+      container.innerHTML = '';
+
+      if (filteredJpls.length === 0) {
+        container.innerHTML = `
+          <div class="p-6 text-center text-slate-500 text-xs">
+            Tidak ada perlintasan yang sesuai filter pencarian.
+          </div>
+        `;
+        return;
+      }
+
+      // Render top 100 in list for fast DOM performance
+      const displayItems = filteredJpls.slice(0, 100);
+
+      displayItems.forEach(jpl => {
+        const badgeColor = jpl.ibpr.riskLevel === 'Extreme' ? 'bg-red-950 text-red-300 border-red-800' :
+                           jpl.ibpr.riskLevel === 'High' ? 'bg-orange-950 text-orange-300 border-orange-800' :
+                           jpl.ibpr.riskLevel === 'Medium' ? 'bg-yellow-950 text-yellow-300 border-yellow-800' :
+                           'bg-emerald-950 text-emerald-300 border-emerald-800';
+
+        const itemEl = document.createElement('div');
+        itemEl.className = 'p-2.5 rounded-lg bg-slate-950/60 hover:bg-slate-800 border border-slate-800/80 cursor-pointer transition flex items-start justify-between group';
+        itemEl.onclick = () => {
+          openJplDetails(jpl);
+          map.setView([jpl.coordinates.lat, jpl.coordinates.lon], 14, { animate: true });
+        };
+
+        itemEl.innerHTML = `
+          <div class="space-y-1">
+            <div class="flex items-center space-x-2">
+              <span class="font-bold text-slate-200 text-xs group-hover:text-kai-orange transition">${jpl.noJpl}</span>
+              <span class="text-[10px] text-slate-400">Km ${jpl.kmHm}</span>
+              <span class="text-[9px] px-1.5 py-0.5 rounded border font-semibold ${badgeColor}">${jpl.ibpr.riskLevel}</span>
+            </div>
+            <div class="text-[11px] text-slate-400 truncate max-w-[210px]">${jpl.antara}</div>
+            <div class="text-[10px] text-slate-500">${jpl.namaJalan} (${jpl.kategoriJalan})</div>
+          </div>
+          <div class="text-right text-[10px] space-y-1 shrink-0">
+            <div class="${jpl.personnel.deficit > 0 ? 'text-amber-400 font-bold' : 'text-emerald-400'}">
+              ${jpl.personnel.deficit > 0 ? `-${jpl.personnel.deficit} PJL` : `Lengkap`}
+            </div>
+            <div class="text-slate-400 text-[9px]">${jpl.guardStatus}</div>
+          </div>
+        `;
+        container.appendChild(itemEl);
+      });
+
+      if (filteredJpls.length > 100) {
+        const moreNote = document.createElement('div');
+        moreNote.className = 'p-2 text-center text-[10px] text-slate-500';
+        moreNote.innerText = `Menampilkan 100 dari ${filteredJpls.length} titik. Gunakan filter untuk spesifikasi.`;
+        container.appendChild(moreNote);
+      }
+    }
+
+    // ================= DETAIL DRAWER LOGIC =================
+    function openJplDetails(jpl) {
+      selectedItem = { type: 'JPL', data: jpl };
+      
+      document.getElementById('drawer-badge-type').innerText = 'JPL';
+      document.getElementById('drawer-badge-type').className = 'px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-blue-900 text-blue-300';
+      
+      const badgeRisk = document.getElementById('drawer-badge-risk');
+      badgeRisk.innerText = `${jpl.ibpr.riskLevel} RISK (Skor: ${jpl.ibpr.riskScore})`;
+      badgeRisk.className = `px-2 py-0.5 rounded text-[10px] font-bold uppercase ${
+        jpl.ibpr.riskLevel === 'Extreme' ? 'bg-red-950 text-red-300 border border-red-800' :
+        jpl.ibpr.riskLevel === 'High' ? 'bg-orange-950 text-orange-300 border border-orange-800' :
+        'bg-yellow-950 text-yellow-300 border border-yellow-800'
+      }`;
+
+      document.getElementById('drawer-badge-divre').innerText = jpl.daopDivre;
+      document.getElementById('drawer-title').innerText = `${jpl.noJpl} (KM ${jpl.kmHm})`;
+      document.getElementById('drawer-subtitle').innerText = `Petak: ${jpl.antara} | ${jpl.namaJalan} (${jpl.kabKota})`;
+
+      switchDrawerTab(currentDrawerTab);
+      document.getElementById('detail-drawer').classList.remove('translate-x-full');
+    }
+
+    function openStationDetails(st) {
+      selectedItem = { type: 'STATION', data: st };
+
+      document.getElementById('drawer-badge-type').innerText = 'STASIUN KA';
+      document.getElementById('drawer-badge-type').className = 'px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-blue-900 text-blue-200';
+
+      const badgeRisk = document.getElementById('drawer-badge-risk');
+      badgeRisk.innerText = st.personnel.totalDeficit > 0 ? `DEFISIT ${st.personnel.totalDeficit} PERSONEL` : `OPERASIONAL PENUH`;
+      badgeRisk.className = `px-2 py-0.5 rounded text-[10px] font-bold uppercase ${st.personnel.totalDeficit > 0 ? 'bg-amber-950 text-amber-300 border border-amber-800' : 'bg-emerald-950 text-emerald-300 border border-emerald-800'}`;
+
+      document.getElementById('drawer-badge-divre').innerText = st.divre;
+      document.getElementById('drawer-title').innerText = `Stasiun ${st.name} (${st.code})`;
+      document.getElementById('drawer-subtitle').innerText = `Kelas: ${st.class} | Emplasemen Langsir: ${st.hasLangsir ? 'Aktif' : 'Tidak Ada'}`;
+
+      switchDrawerTab('personnel');
+      document.getElementById('detail-drawer').classList.remove('translate-x-full');
+    }
+
+    function openRestHouseDetails(rh) {
+      selectedItem = { type: 'REST_HOUSE', data: rh };
+
+      document.getElementById('drawer-badge-type').innerText = rh.type.toUpperCase();
+      document.getElementById('drawer-badge-type').className = 'px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-purple-900 text-purple-200';
+
+      const badgeRisk = document.getElementById('drawer-badge-risk');
+      badgeRisk.innerText = `OKUPANSI ${rh.okupansiSaatIni}/${rh.kapasitas} BED`;
+      badgeRisk.className = 'px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-slate-800 text-slate-300 border border-slate-700';
+
+      document.getElementById('drawer-badge-divre').innerText = rh.divre;
+      document.getElementById('drawer-title').innerText = rh.nama;
+      document.getElementById('drawer-subtitle').innerText = `${rh.lokasiStasiun} | ${rh.alamat}`;
+
+      switchDrawerTab('facilities');
+      document.getElementById('detail-drawer').classList.remove('translate-x-full');
+    }
+
+    function closeDrawer() {
+      document.getElementById('detail-drawer').classList.add('translate-x-full');
+    }
+
+    function switchDrawerTab(tab) {
+      currentDrawerTab = tab;
+      const tabs = ['ibpr', 'personnel', 'facilities'];
+      tabs.forEach(t => {
+        const btn = document.getElementById(`tab-btn-${t}`);
+        if (t === tab) {
+          btn.className = 'py-2.5 px-3 border-b-2 border-kai-orange text-kai-orange font-semibold flex items-center gap-1.5';
+        } else {
+          btn.className = 'py-2.5 px-3 border-b-2 border-transparent text-slate-400 hover:text-slate-200 font-semibold flex items-center gap-1.5';
+        }
+      });
+
+      renderDrawerContent();
+      lucide.createIcons();
+    }
+
+    function renderDrawerContent() {
+      const container = document.getElementById('drawer-body');
+      if (!selectedItem) return;
+
+      const data = selectedItem.data;
+
+      if (selectedItem.type === 'JPL') {
+        if (currentDrawerTab === 'ibpr') {
+          container.innerHTML = `
+            <!-- Risk Score Matrix Overview -->
+            <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-slate-200 text-xs">MATRIKS RISIKO K3 (IBPR)</span>
+                <span class="px-2 py-0.5 rounded text-[11px] font-bold ${
+                  data.ibpr.riskLevel === 'Extreme' ? 'bg-red-950 text-red-400 border border-red-800' :
+                  data.ibpr.riskLevel === 'High' ? 'bg-orange-950 text-orange-400 border border-orange-800' :
+                  'bg-yellow-950 text-yellow-400 border border-yellow-800'
+                }">${data.ibpr.riskLevel.toUpperCase()} RISK</span>
+              </div>
+
+              <!-- Matrix Numbers -->
+              <div class="grid grid-cols-3 gap-2 text-center">
+                <div class="bg-slate-900 p-2 rounded-lg border border-slate-800">
+                  <div class="text-[10px] text-slate-400">Kemungkinan (L)</div>
+                  <div class="text-base font-extrabold text-amber-400">${data.ibpr.likelihood} / 5</div>
+                  <div class="text-[9px] text-slate-500">${data.ibpr.likelihood >= 4 ? 'Sering Near-Miss' : 'Terkontrol'}</div>
+                </div>
+
+                <div class="bg-slate-900 p-2 rounded-lg border border-slate-800">
+                  <div class="text-[10px] text-slate-400">Keparahan (C)</div>
+                  <div class="text-base font-extrabold text-red-400">${data.ibpr.consequence} / 5</div>
+                  <div class="text-[9px] text-slate-500">${data.kategoriJalan}</div>
+                </div>
+
+                <div class="bg-slate-900 p-2 rounded-lg border border-slate-800">
+                  <div class="text-[10px] text-slate-400">Skor Risiko (L×C)</div>
+                  <div class="text-base font-extrabold text-white">${data.ibpr.riskScore}</div>
+                  <div class="text-[9px] text-slate-500">Skala 1 - 25</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Identified Hazards List -->
+            <div class="space-y-2">
+              <span class="font-bold text-slate-200 text-xs flex items-center gap-1.5">
+                <i data-lucide="alert-octagon" class="w-4 h-4 text-kai-orange"></i>
+                IDENTIFIKASI BAHAYA & POTENSI RISIKO
+              </span>
+
+              ${data.ibpr.hazards.map(h => `
+                <div class="p-3 bg-slate-950 rounded-xl border border-slate-800/80 space-y-1.5">
+                  <div class="font-bold text-red-300 text-xs flex items-start gap-1.5">
+                    <span class="text-red-500 font-bold">•</span>
+                    <span>${h.hazard}</span>
+                  </div>
+                  <div class="text-[11px] text-slate-400 pl-3"><strong>Dampak:</strong> ${h.impact}</div>
+                  <div class="text-[11px] text-emerald-400/90 pl-3 bg-emerald-950/20 p-1.5 rounded border border-emerald-900/30">
+                    <strong>Mitigasi K3:</strong> ${h.mitigasi}
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+
+            <!-- Hierarchy of Control Recommendation -->
+            <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-2 text-xs">
+              <span class="font-bold text-slate-200 flex items-center gap-1.5">
+                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i>
+                REKOMENDASI HIRARKI PENGENDALIAN
+              </span>
+              <ul class="space-y-1 text-slate-400 text-[11px] pl-2 list-disc list-inside">
+                <li><strong class="text-slate-300">Rekayasa Teknik:</strong> Pasang sirine EWS otomatis & rumble strips.</li>
+                <li><strong class="text-slate-300">Administratif:</strong> Pemenuhan formasi 4 PJL (rotasi 3 shift reguler).</li>
+                <li><strong class="text-slate-300">APD Petugas:</strong> Rompi reflektif Hi-Vis, helm kerja, lentera semboyan.</li>
+              </ul>
+            </div>
+          `;
+        } else if (currentDrawerTab === 'personnel') {
+          container.innerHTML = `
+            <!-- Personnel Requirement vs Existing -->
+            <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-slate-200 text-xs">MONITORING FORMASI PETUGAS PJL</span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold ${data.personnel.deficit > 0 ? 'bg-amber-950 text-amber-300 border border-amber-800' : 'bg-emerald-950 text-emerald-300'}">
+                  ${data.personnel.status}
+                </span>
+              </div>
+
+              <div class="space-y-1.5">
+                <div class="flex justify-between text-xs text-slate-400">
+                  <span>Kebutuhan Formasi: <strong class="text-white">${data.personnel.needed} Orang</strong></span>
+                  <span>Eksisting: <strong class="text-white">${data.personnel.existing} Orang</strong></span>
+                </div>
+                <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden flex">
+                  <div class="bg-emerald-500 h-full" style="width: ${(data.personnel.existing / data.personnel.needed) * 100}%"></div>
+                  <div class="bg-red-500 h-full" style="width: ${(data.personnel.deficit / data.personnel.needed) * 100}%"></div>
+                </div>
+                ${data.personnel.deficit > 0 ? `
+                  <p class="text-[10px] text-amber-400">⚠️ Kekurangan ${data.personnel.deficit} petugas PJL untuk pengawasan 24 jam shift penuh.</p>
+                ` : `
+                  <p class="text-[10px] text-emerald-400">✅ Formasi terpenuhi untuk 3 giliran dinas + 1 cadangan.</p>
+                `}
+              </div>
+            </div>
+
+            <!-- Assigned Staff Cards -->
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-slate-200 text-xs flex items-center gap-1.5">
+                  <i data-lucide="id-card" class="w-4 h-4 text-blue-400"></i>
+                  DAFTAR PERSONEL DINAS SAAT INI
+                </span>
+                <button onclick="promptAddPersonnel('${data.id}')" class="px-2 py-1 bg-kai-orange hover:bg-kai-hoverOrange text-white rounded text-[10px] font-semibold flex items-center gap-1 transition">
+                  <i data-lucide="plus" class="w-3 h-3"></i> Tambah
+                </button>
+              </div>
+
+              ${data.personnel.assignedStaff.length === 0 ? `
+                <div class="p-4 bg-slate-950 rounded-xl border border-red-900/40 text-center space-y-1">
+                  <div class="text-red-400 font-bold text-xs">TIDAK ADA PERSONEL BERTUGAS</div>
+                  <div class="text-slate-400 text-[11px]">Perlintasan ini saat ini berstatus Tak Terjaga / Kosong.</div>
+                </div>
+              ` : data.personnel.assignedStaff.map(staff => `
+                <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-2">
+                  <div class="flex items-start justify-between">
+                    <div>
+                      <div class="font-bold text-slate-100 text-xs">${staff.name}</div>
+                      <div class="text-[10px] text-slate-400">NIPP: ${staff.nipp} | ${staff.role}</div>
+                    </div>
+                    <span class="px-2 py-0.5 rounded text-[9px] font-semibold bg-blue-950 text-blue-300 border border-blue-800">${staff.shift}</span>
+                  </div>
+
+                  <div class="grid grid-cols-2 gap-2 text-[10px] pt-1 border-t border-slate-900">
+                    <div>
+                      <span class="text-slate-500">Sertifikasi DJKA:</span>
+                      <div class="text-emerald-400 font-medium">${staff.sertifikasiDjka}</div>
+                    </div>
+                    <div>
+                      <span class="text-slate-500">Kesehatan (Fit to Work):</span>
+                      <div class="${staff.fitToWork.includes('Pengawasan') ? 'text-amber-400' : 'text-emerald-400'} font-medium">${staff.fitToWork}</div>
+                    </div>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          `;
+        } else if (currentDrawerTab === 'facilities') {
+          container.innerHTML = `
+            <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800 space-y-3">
+              <span class="font-bold text-slate-200 text-xs flex items-center gap-1.5">
+                <i data-lucide="clipboard-check" class="w-4 h-4 text-emerald-400"></i>
+                CHECKLIST FASILITAS GARDU & K3 PERLINTASAN
+              </span>
+
+              <div class="space-y-2 text-xs">
+                ${Object.entries(data.facilities).map(([key, val]) => `
+                  <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 flex items-center justify-between">
+                    <div>
+                      <div class="font-semibold text-slate-300 capitalize">${key.replace(/([A-Z])/g, ' $1')}</div>
+                      <div class="text-[11px] text-slate-400">${val}</div>
+                    </div>
+                    <div>
+                      ${val.includes('Tidak') || val.includes('Kadaluarsa') || val.includes('Rusak') ? 
+                        `<span class="w-5 h-5 rounded-full bg-red-950 text-red-400 border border-red-800 flex items-center justify-center text-[10px] font-bold">✕</span>` :
+                        `<span class="w-5 h-5 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-800 flex items-center justify-center text-[10px] font-bold">✓</span>`
+                      }
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+
+              <button onclick="alert('Form verifikasi inspeksi fasilitas JPL berhasil disimpan!')" class="w-full py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg font-semibold text-xs border border-slate-700 transition">
+                Update Status Fasilitas Gardu
+              </button>
+            </div>
+          `;
+        }
+      } else if (selectedItem.type === 'STATION') {
+        container.innerHTML = `
+          <!-- Station Personnel Overview -->
+          <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800 space-y-3">
+            <span class="font-bold text-slate-200 text-xs flex items-center gap-1.5">
+              <i data-lucide="users" class="w-4 h-4 text-kai-orange"></i>
+              FORMASI PERSONEL STASIUN (PPKA & LANGSIR)
+            </span>
+
+            <div class="grid grid-cols-2 gap-3 text-xs">
+              <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800">
+                <div class="text-[10px] text-slate-400 font-medium">PPKA (Pengatur Perjalanan)</div>
+                <div class="text-sm font-bold text-white mt-1">${data.personnel.ppka.existing} / ${data.personnel.ppka.needed} Org</div>
+                <div class="text-[10px] ${data.personnel.ppka.deficit > 0 ? 'text-amber-400 font-semibold' : 'text-emerald-400'}">
+                  ${data.personnel.ppka.deficit > 0 ? `Defisit ${data.personnel.ppka.deficit} Orang` : 'Lengkap'}
+                </div>
+              </div>
+
+              <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800">
+                <div class="text-[10px] text-slate-400 font-medium">Petugas Langsir (Juru Langsir)</div>
+                <div class="text-sm font-bold text-white mt-1">${data.personnel.langsir.existing} / ${data.personnel.langsir.needed} Org</div>
+                <div class="text-[10px] ${data.personnel.langsir.deficit > 0 ? 'text-amber-400 font-semibold' : 'text-emerald-400'}">
+                  ${data.personnel.langsir.deficit > 0 ? `Defisit ${data.personnel.langsir.deficit} Orang` : 'Lengkap'}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PPKA Staff List -->
+          <div class="space-y-2">
+            <span class="font-bold text-slate-200 text-xs">Petugas PPKA Berdinas</span>
+            ${data.personnel.ppka.staff.map(s => `
+              <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-1">
+                <div class="flex items-center justify-between">
+                  <div class="font-bold text-slate-100 text-xs">${s.name}</div>
+                  <span class="text-[10px] text-blue-400 font-medium">${s.shift}</span>
+                </div>
+                <div class="text-[10px] text-slate-400">NIPP: ${s.nipp} | ${s.sertifikasiDjka}</div>
+                <div class="text-[10px] text-emerald-400">${s.fitToWork}</div>
+              </div>
+            `).join('')}
+          </div>
+
+          <!-- Langsir Staff List -->
+          ${data.hasLangsir ? `
+            <div class="space-y-2">
+              <span class="font-bold text-slate-200 text-xs">Petugas Langsir Berdinas</span>
+              ${data.personnel.langsir.staff.map(l => `
+                <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-1">
+                  <div class="flex items-center justify-between">
+                    <div class="font-bold text-slate-100 text-xs">${l.name}</div>
+                    <span class="text-[10px] text-amber-400 font-medium">${l.shift}</span>
+                  </div>
+                  <div class="text-[10px] text-slate-400">NIPP: ${l.nipp} | ${l.sertifikasiDjka}</div>
+                  <div class="text-[10px] text-emerald-400">${l.fitToWork}</div>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+        `;
+      } else if (selectedItem.type === 'REST_HOUSE') {
+        container.innerHTML = `
+          <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800 space-y-3">
+            <span class="font-bold text-slate-200 text-xs flex items-center gap-1.5">
+              <i data-lucide="home" class="w-4 h-4 text-purple-400"></i>
+              INFORMASI FASILITAS RUMAH SINGGAH / GRIYA KARYA
+            </span>
+
+            <div class="grid grid-cols-2 gap-2 text-center text-xs">
+              <div class="bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                <div class="text-[10px] text-slate-400">Kapasitas Kasur</div>
+                <div class="text-base font-bold text-purple-300">${data.kapasitas} Bed</div>
+              </div>
+              <div class="bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                <div class="text-[10px] text-slate-400">Okupansi Istirahat</div>
+                <div class="text-base font-bold text-emerald-400">${data.okupansiSaatIni} Petugas</div>
+              </div>
+            </div>
+
+            <div class="space-y-2 text-xs pt-2">
+              ${Object.entries(data.fasilitas).map(([k, v]) => `
+                <div class="p-2 bg-slate-900 rounded-lg border border-slate-800 flex items-center justify-between">
+                  <span class="text-slate-300 font-medium capitalize">${k.replace(/([A-Z])/g, ' $1')}</span>
+                  <span class="text-slate-400 text-[11px]">${v}</span>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    function promptAddPersonnel(jplId) {
+      const name = prompt("Masukkan Nama Petugas PJL Baru:");
+      if (!name) return;
+      const nipp = prompt("Masukkan NIPP Petugas:");
+      if (!nipp) return;
+
+      const jpl = rawJpl.find(j => j.id === jplId);
+      if (jpl) {
+        jpl.personnel.existing += 1;
+        jpl.personnel.deficit = Math.max(0, jpl.personnel.needed - jpl.personnel.existing);
+        jpl.personnel.status = jpl.personnel.deficit === 0 ? "Formasi Terpenuhi" : `Defisit ${jpl.personnel.deficit} Personel`;
+        jpl.personnel.assignedStaff.push({
+          nipp: nipp,
+          name: name,
+          role: "Penjaga Jalur Lintasan (PJL)",
+          shift: "Shift Siaga",
+          sertifikasiDjka: "STTUK DJKA Kemenhub",
+          fitToWork: "Fit to Work (Prima)",
+          lastMcu: "2026-10-01"
+        });
+
+        // Recalculate risk if deficit cleared
+        if (jpl.personnel.deficit === 0 && jpl.ibpr.riskScore < 15) {
+          jpl.ibpr.riskLevel = "Low";
+          jpl.ibpr.markerColor = "green";
+        }
+
+        updateKpiCounters();
+        applyFilters();
+        openJplDetails(jpl);
+        alert(`Petugas ${name} (NIPP: ${nipp}) berhasil ditugaskan ke ${jpl.noJpl}!`);
+      }
+    }
+
+    // ================= LAYER TOGGLES =================
+    function toggleLayers() {
+      const showRails = document.getElementById('layer-rails').checked;
+      const showJpl = document.getElementById('layer-jpl').checked;
+      const showStations = document.getElementById('layer-stations').checked;
+      const showRestHouses = document.getElementById('layer-resthouses').checked;
+
+      if (showRails) map.addLayer(railwayTracksLayerGroup); else map.removeLayer(railwayTracksLayerGroup);
+      if (showJpl) map.addLayer(markersLayerGroup); else map.removeLayer(markersLayerGroup);
+      if (showStations) map.addLayer(stationsLayerGroup); else map.removeLayer(stationsLayerGroup);
+      if (showRestHouses) map.addLayer(restHousesLayerGroup); else map.removeLayer(restHousesLayerGroup);
+    }
+
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('-translate-x-full');
+    }
+
+    function handleSearch() {
+      applyFilters();
+    }
+
+    function resetFilters() {
+      document.getElementById('filter-divre').value = 'ALL';
+      document.getElementById('filter-risk').value = 'ALL';
+      document.getElementById('filter-personnel').value = 'ALL';
+      document.getElementById('filter-road').value = 'ALL';
+      document.getElementById('search-input').value = '';
+      applyFilters();
+    }
+
+    function focusExtremeRisk() {
+      document.getElementById('filter-risk').value = 'Extreme';
+      applyFilters();
+      if (filteredJpls.length > 0) {
+        const first = filteredJpls[0];
+        map.setView([first.coordinates.lat, first.coordinates.lon], 11, { animate: true });
+      }
+    }
+
+    function zoomToSumatera() {
+      map.setView([-0.5, 101.5], 7, { animate: true });
+    }
+
+    // ================= ANALYTICS MODAL & CHARTS =================
+    let chartRiskInstance = null;
+    let chartPersonnelInstance = null;
+
+    function openAnalyticsModal() {
+      document.getElementById('analytics-modal').classList.remove('hidden');
+      document.getElementById('analytics-modal').classList.add('flex');
+      renderAnalyticsCharts();
+    }
+
+    function closeAnalyticsModal() {
+      document.getElementById('analytics-modal').classList.add('hidden');
+      document.getElementById('analytics-modal').classList.remove('flex');
+    }
+
+    function renderAnalyticsCharts() {
+      if (chartRiskInstance) chartRiskInstance.destroy();
+      if (chartPersonnelInstance) chartPersonnelInstance.destroy();
+
+      // Risk Distribution
+      const riskCounts = { Extreme: 0, High: 0, Medium: 0, Low: 0 };
+      rawJpl.forEach(j => { riskCounts[j.ibpr.riskLevel] = (riskCounts[j.ibpr.riskLevel] || 0) + 1; });
+
+      const ctxRisk = document.getElementById('chart-risk-dist').getContext('2d');
+      chartRiskInstance = new Chart(ctxRisk, {
+        type: 'doughnut',
+        data: {
+          labels: ['Extreme (Merah)', 'High (Oranye)', 'Medium (Kuning)', 'Low (Hijau)'],
+          datasets: [{
+            data: [riskCounts.Extreme, riskCounts.High, riskCounts.Medium, riskCounts.Low],
+            backgroundColor: ['#ef4444', '#f97316', '#eab308', '#22c55e'],
+            borderWidth: 2,
+            borderColor: '#0f172a'
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { position: 'bottom', labels: { color: '#94a3b8', font: { size: 11 } } }
+          }
+        }
+      });
+
+      // Deficit by Divre
+      const divres = ["DIVRE I SUMATERA UTARA", "DIVRE II SUMATERA BARAT", "DIVRE III PALEMBANG", "DIVRE IV TANJUNGKARANG"];
+      const neededByDivre = divres.map(d => rawJpl.filter(j => j.daopDivre === d).reduce((s, j) => s + j.personnel.needed, 0));
+      const existingByDivre = divres.map(d => rawJpl.filter(j => j.daopDivre === d).reduce((s, j) => s + j.personnel.existing, 0));
+
+      const ctxPers = document.getElementById('chart-personnel-divre').getContext('2d');
+      chartPersonnelInstance = new Chart(ctxPers, {
+        type: 'bar',
+        data: {
+          labels: ['Divre I Sumut', 'Divre II Sumbar', 'Divre III Plg', 'Divre IV Tnk'],
+          datasets: [
+            { label: 'Kebutuhan Formasi', data: neededByDivre, backgroundColor: '#38bdf8' },
+            { label: 'Eksisting PJL', data: existingByDivre, backgroundColor: '#22c55e' }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            x: { ticks: { color: '#94a3b8' }, grid: { color: '#1e293b' } },
+            y: { ticks: { color: '#94a3b8' }, grid: { color: '#1e293b' } }
+          },
+          plugins: {
+            legend: { position: 'bottom', labels: { color: '#94a3b8' } }
+          }
+        }
+      });
+    }
+
+    // ================= EXPORT CSV =================
+    function exportDataCsv() {
+      const headers = ["ID", "No JPL", "Km Hm", "Antara", "Nama Jalan", "Kategori Jalan", "Status JPL", "Penjaga", "Daop/Divre", "Risiko IBPR", "Skor Risiko", "Kebutuhan PJL", "Eksisting PJL", "Defisit PJL", "Latitude", "Longitude"];
+      const rows = filteredJpls.map(j => [
+        `"${j.id}"`,
+        `"${j.noJpl}"`,
+        `"${j.kmHm}"`,
+        `"${j.antara}"`,
+        `"${j.namaJalan}"`,
+        `"${j.kategoriJalan}"`,
+        `"${j.statusJpl}"`,
+        `"${j.penjaga}"`,
+        `"${j.daopDivre}"`,
+        `"${j.ibpr.riskLevel}"`,
+        j.ibpr.riskScore,
+        j.personnel.needed,
+        j.personnel.existing,
+        j.personnel.deficit,
+        j.coordinates.lat,
+        j.coordinates.lon
+      ]);
+
+      const csvContent = "data:text/csv;charset=utf-8," + [headers.join(','), ...rows.map(e => e.join(','))].join('\n');
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", `KAI_IBPR_JPL_Area2_${new Date().toISOString().slice(0, 10)}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  </script>
+</body>
+</html>
